@@ -301,9 +301,7 @@ input[type=button] {
   font-weight: 600;
   color: #262626;
 
-  &:nth-child(7) {
-    color: #ff685d;
-  }
+
 }
 
 .calendar__number {
