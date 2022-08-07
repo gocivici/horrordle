@@ -1,0 +1,161 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title> movie game </title>
+</head>
+<div class="topnav">
+  <div class="subnav">
+  <div class="topnav-left">
+  <a class="wideInfo" href="#info"><i class="fa fa-question"></i></a>
+  </div>
+
+  <img class="title"  width="300" src="title3.png" alt="horrordle">
+
+  <!-- <a href="#news">News</a>
+  <a href="#contact">Contact</a> -->
+  <div class="topnav-right">
+    <a class="mobileInfo" href="#info"><i class="fa fa-question"></i></a>
+    <a href="#stats"><i class="fas fa-chart-bar"></i></a>
+    <a href="#archive"><i class="fas fa-history"></i></a>
+  </div>
+  </div>
+</div>
+<body>
+
+
+  <div id="info" class="overlay">
+  	<div class="popup">
+  		<h2>Instructions</h2>
+  		<a class="close" href="#">&times;</a>
+  		<div class="content">
+  			<i class="far fa-image"></i>
+        <div class="InstructionText">
+        <p>Use the death scene provided to guess the name of the movie.</p>
+        </div>
+
+        <i class="fas fa-skull"></i>
+        <div class="InstructionText">
+        <p>If you guess wrong a new death
+         scene from the movie is revealed but you will use 1 point.</p>
+        </div>
+
+      <i class="fas fa-tint"></i>
+      <div class="InstructionText">
+        <p>You have a maximum of 3 guesses to find the movie.</p>
+      </div>
+   </div>
+  	</div>
+  </div>
+
+  <div id="stats" class="overlay">
+    <div class="popup">
+      <h2>Stats</h2>
+      <a class="close" href="#">&times;</a>
+      <div id="streakNumber" class="content">
+        your stats
+      </div>
+    </div>
+  </div>
+
+  <div id="archive" class="overlay">
+    <div class="popup">
+
+      <h2>Archive</h2>
+      <a class="close" href="#">&times;</a>
+            <div class="archive">
+      <div class="calendar">
+  <!-- <div class="calendar__picture">
+    <h2>18, Sunday</h2>
+    <h3>November</h3>
+  </div> -->
+  <div class="calendar__date">
+    <div class="calendar__day">M</div>
+    <div class="calendar__day">T</div>
+    <div class="calendar__day">W</div>
+    <div class="calendar__day">T</div>
+    <div class="calendar__day">F</div>
+    <div class="calendar__day">S</div>
+    <div class="calendar__day">S</div>
+    <div class="calendar__number1"></div>
+    <div class="calendar__number1"></div>
+    <div class="calendar__number1"></div>
+    <div class="calendar__number1"></div>
+    <div class="calendar__number1"></div>
+    <div class="calendar__number">1</div>
+    <div class="calendar__number">2</div>
+    <div class="calendar__number">3</div>
+    <div class="calendar__number">4</div>
+    <div class="calendar__number">5</div>
+    <div class="calendar__number">6</div>
+    <div class="calendar__number">7</div>
+    <div class="calendar__number">8</div>
+    <div class="calendar__number">9</div>
+    <div class="calendar__number">10</div>
+    <div class="calendar__number">11</div>
+    <div class="calendar__number">12</div>
+    <div class="calendar__number">13</div>
+    <div class="calendar__number">14</div>
+    <div class="calendar__number">15</div>
+    <div class="calendar__number">16</div>
+    <div class="calendar__number">17</div>
+    <div class="calendar__number">18</div>
+    <div class="calendar__number">19</div>
+    <div class="calendar__number">20</div>
+    <div class="calendar__number">21</div>
+    <div class="calendar__number">22</div>
+    <div class="calendar__number">23</div>
+    <div class="calendar__number">24</div>
+    <div class="calendar__number">25</div>
+    <div class="calendar__number">26</div>
+    <div class="calendar__number">27</div>
+    <div class="calendar__number">28</div>
+    <div class="calendar__number">29</div>
+    <div class="calendar__number">30</div>
+    <div class="calendar__number">31</div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="title">
+  <img  width="400" src="title.png" alt="horrordle">
+  </div> -->
+
+  <!-- <h1>Guess the Movie!</h1> -->
+<img src="" id="movieFrame" alt="movie death frame" class="center">
+
+
+
+
+  <form id="guessForm" autocomplete="off">
+    <div class="autocomplete">
+        <!-- <label for="guess">Movie:</label> -->
+        <input type="text" id="guess" placeholder="Movie">
+    </div>
+    <input type="button" id="submitGuess" value="Submit Guess">
+  </form>
+
+  <p id="feedback"></p>
+  <div class="result">
+    <input onclick="copyToClipboard()" type="button" id="shareResult" value="Share Result">
+  </div>
+  <div class="bottomContainer">
+  <div id="firstGuess"></div>
+  <div id="secondGuess"></div>
+  <div id="thirdGuess"></div>
+  </div>
+<script src="mainTest2.js"></script>
+
+
+</body>
+
+</html>
