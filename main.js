@@ -1,7 +1,7 @@
 //
   window.onload = deathOftheDay;
 var playedBefore = false;
-
+var sameDay = false;
 for (var i = 0; i < localStorage.length; i++){
   console.log(localStorage.key(i));
 }
@@ -11,7 +11,7 @@ for (var i = 0; i < localStorage.length; i++){
   var movies = ["a nightmare on elm street","Friday the 13th","Final Destination","Scream 2","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
   var pix = [];
   autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('July 29, 2022 00:00:00');
+  var gameBeginning = new Date('September 6, 2022 00:00:00');
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   console.log(gameBeginning.getTimezoneOffset());
   var present_date = new Date();
@@ -67,7 +67,7 @@ var points = "⬛⬛⬛"
   feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
   if(!localStorage.getItem('streak')){localStorage.setItem('streak',0)}
 
-checkingGuess();
+
 
 
 
@@ -81,7 +81,7 @@ function clearGuess() {
   localStorage.removeItem('result');
 }
 function checkingGuess() {
-  localStorage.setItem('day', dayCount);
+  
 
 streakNumber.textContent = localStorage.getItem('streak');
   if (localStorage.getItem('day')==dayCount) {
@@ -101,8 +101,10 @@ streakNumber.textContent = localStorage.getItem('streak');
   secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');
 }else {
 clearGuess();
+localStorage.setItem('day', dayCount);
 }
 }
+checkingGuess();
 
   console.log(dayCount);
 
