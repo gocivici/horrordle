@@ -10,14 +10,16 @@ for (var i = 0; i < localStorage.length; i++){
 
 
 
-  var movies = ["a nightmare on elm street","Friday the 13th","Final Destination","Scream 2","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
+  var movies = ["a nightmare on elm street","Friday the 13th","Event Horizon","Hellraiser","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
   var pix = [];
   autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 8, 2022 00:00:00');
-  
+  var gameBeginning = new Date('September 10, 2022 13:02:00');
+  var countDownTime =  new Date();
+  var present_date = new Date();
+
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   console.log(gameBeginning.getTimezoneOffset());
-  var present_date = new Date();
+  
   console.log("gameBeginning: ",gameBeginning);
   console.log("now: ",present_date);
   var dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
@@ -91,6 +93,7 @@ function clearGuess() {
   document.getElementById("secondGuess").style.display = "none";
   document.getElementById("shareResult").style.display = "none";
   document.getElementById("guessForm").style.display = "block";
+  document.getElementById("countDown").style.display = "none"
   textResult = "Horrordle #"+dayCount+"\n🔪";
 }
 function checkingGuess() {
@@ -110,7 +113,7 @@ streakNumber.textContent = localStorage.getItem('streak');
   if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);}
   if(localStorage.getItem('firstGuess')){firstGuess.textContent = "❌" + localStorage.getItem('firstGuess');document.getElementById("firstGuess").style.display = "block";}
   if(localStorage.getItem('secondGuess')){secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess')){feedback.textContent = "You got it right!";document.getElementById("shareResult").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";};
+  if(localStorage.getItem('winningGuess')){feedback.textContent = "You got it right!";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";};
   secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');
 }else {
 clearGuess();
@@ -129,7 +132,7 @@ checkingGuess();
    movieOfTheDay = movies[dayCount-1];
 
     for (let i = 1; i < 4; i++) {
-      pix.push("images/"+movieOfTheDay+"/"+i+".jpg");
+      pix.push("images/"+movieOfTheDay+"/"+i+".png");
     }
     console.log('Movie: ', movieOfTheDay);
     console.log('Array: ', pix);
@@ -150,6 +153,7 @@ console.log("day count:" + dayCount);
       streakNumber.textContent = " " + localStorage.getItem('streak');
       document.getElementById("guessForm").style.display = "none";
       feedback.textContent = "You got it right!";
+      document.getElementById("countDown").style.display = "block";
       document.getElementById("shareResult").style.display = "block";
       localStorage.setItem("winningGuess", guess.value);
         document.getElementById("firstGuess").style.display = "none";
@@ -217,7 +221,8 @@ console.log("day count:" + dayCount);
        /*for each item in the array...*/
 
        for (i = 0; i < arr.length; i++) {
-         newArray = arr[i].split(" ");
+        //  newArray = arr[i].split(" ");
+        newArray = arr[i].split(" ");
          /*check if the item starts with the same letters as the text field value:*/
          for (var j = 0; j < newArray.length; j++) {
 
@@ -362,6 +367,26 @@ const config = {
   }
 };
 
+var x = setInterval(function() {
+  countDownTime.setDate(Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24))+2);
+  countDownTime.setHours(13);
+  countDownTime.setMinutes(02);
+  countDownTime.setSeconds(0);
+  var now = new Date();
+  var remainingTime = countDownTime - now;
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+  hoursLeft = Math.trunc((remainingTime % day) / hour);
+  minutesLeft = Math.trunc((remainingTime % hour) / minute);
+  secondsLeft = Math.trunc((remainingTime % minute) / second);
+document.getElementById("countDown").innerHTML =  hoursLeft + "h "
++ minutesLeft + "m " + secondsLeft + "s ";
+if (remainingTime < 0) {
+  //  window.location.reload();
+}
+}, 1000);
 const myChart = new Chart(
   document.getElementById('myChart'),
   config

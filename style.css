@@ -131,6 +131,9 @@ i{
   margin-right: auto;
 
 }
+#countDown{
+  display: none;
+}
 #guessForm{
   padding-bottom: 14px;
 }
@@ -158,6 +161,17 @@ i{
   margin-right: auto;
   width: 50%;
 }
+figure{  
+  width:%100;
+  overflow: hidden;
+  margin:10;  
+}
+/* figure img{
+  display:block; 
+  width:100%;
+} */
+
+
 .title {
   position: absolute;
   left: 0;
@@ -387,7 +401,12 @@ font-style:normal;
     padding: 10px;
     grid-gap: 15px;
   }
+  .movie-img img{
+    margin:0 -16.665%;
+    width:133.33%;  
+  }
 }
+
 
 
 @media only screen and (max-width: 600px) {
