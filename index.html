@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <title> HORRORDLE </title>
+  <title> test </title>
 </head>
 <div class="topnav">
   <div class="subnav">
@@ -16,7 +16,7 @@
   <a class="wideInfo" href="#support"><i class="fa fa-heart"></i></a>
   </div>
 
-  <img class="title"  width="300" src="title.png" alt="horrordle">
+  <img class="title"  width="300" src="title.png" alt="horror">
 
   <!-- <a href="#news">News</a>
   <a href="#contact">Contact</a> -->
@@ -156,13 +156,15 @@
     <div class="autocomplete">
         <!-- <label for="guess">Movie:</label> -->
         <input type="text" id="guess" placeholder="Movie">
+        <input type="button" id="submitGuess" value="Submit Guess">
     </div>
-    <input type="button" id="submitGuess" value="Submit Guess">
+    
   </form>
-
+  <h1 id="movieName"></h1>
   <p id="feedback"></p>
   <h2 id="countDown"></h2>
   <div class="result">
+    <div id="resultText"></div>
     <input onclick="copyToClipboard()" type="button" id="shareResult" value="Share Result">
   </div>
   <div class="bottomContainer">
@@ -173,14 +175,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="main.js"></script>
 
-<footer class="footer">
-  <!-- <p>Designed with ❤️ by <a href="https://ko-fi.com/Gorkem">Görkem</a></p> -->
+<!-- <footer class="footer">
+  <p>Designed with ❤️ by <a href="https://ko-fi.com/Gorkem">Görkem</a></p>
 
 
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />
 
 
-</footer>
+</footer> -->
 
 </body>
 

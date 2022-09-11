@@ -10,10 +10,10 @@ for (var i = 0; i < localStorage.length; i++){
 
 
 
-  var movies = ["a nightmare on elm street","Friday the 13th","Event Horizon","Hellraiser","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
+  var movies = ["A Nightmare on Elm Street","Friday the 13th","Event Horizon","Hellraiser","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
   var pix = [];
   autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 10, 2022 13:02:00');
+  var gameBeginning = new Date('September 9, 2022 24:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
 
@@ -110,10 +110,10 @@ streakNumber.textContent = localStorage.getItem('streak');
   console.log(localStorage.getItem('secondGuess'));
   if(localStorage.getItem('guessNo')){guessNo=localStorage.getItem('guessNo')};
   feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
-  if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);}
+  if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);document.getElementById("resultText").innerHTML =textResult}
   if(localStorage.getItem('firstGuess')){firstGuess.textContent = "❌" + localStorage.getItem('firstGuess');document.getElementById("firstGuess").style.display = "block";}
   if(localStorage.getItem('secondGuess')){secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess')){feedback.textContent = "You got it right!";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";};
+  if(localStorage.getItem('winningGuess')){document.getElementById("feedback").innerHTML = "Next movie will reveal at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";};
   secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');
 }else {
 clearGuess();
@@ -152,7 +152,7 @@ console.log("day count:" + dayCount);
       console.log(localStorage.getItem('day'+dayCount));
       streakNumber.textContent = " " + localStorage.getItem('streak');
       document.getElementById("guessForm").style.display = "none";
-      feedback.textContent = "You got it right!";
+      document.getElementById("movieName").innerHTML = "✔️ " + movieOfTheDay + " ✔️";
       document.getElementById("countDown").style.display = "block";
       document.getElementById("shareResult").style.display = "block";
       localStorage.setItem("winningGuess", guess.value);
@@ -164,7 +164,10 @@ console.log("day count:" + dayCount);
         textResult = textResult + "⬛";
       }
       localStorage.setItem('result', textResult);
+      document.getElementById("feedback").innerHTML = "Next movie revealed at midnight! 🕛 <br>";
+      document.getElementById("resultText").innerHTML = textResult;
       dates[dayCount-1].classList.add('won');
+
 
     } else if(guessNo==1){
       guessNo = guessNo + 1;
@@ -368,9 +371,10 @@ const config = {
 };
 
 var x = setInterval(function() {
-  countDownTime.setDate(Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24))+2);
-  countDownTime.setHours(13);
-  countDownTime.setMinutes(02);
+  // countDownTime.setDate(Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24))+2);
+  countDownTime.setDate(present_date.getDate()+1);
+  countDownTime.setHours(24);
+  countDownTime.setMinutes(0);
   countDownTime.setSeconds(0);
   var now = new Date();
   var remainingTime = countDownTime - now;
