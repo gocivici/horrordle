@@ -14,6 +14,7 @@ for (var i = 0; i < localStorage.length; i++){
   var pix = [];
   autocomplete(document.getElementById("guess"), movies);
   var gameBeginning = new Date('September 8, 2022 00:00:00');
+  
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   console.log(gameBeginning.getTimezoneOffset());
   var present_date = new Date();
@@ -88,6 +89,8 @@ function clearGuess() {
   localStorage.removeItem('result');
   document.getElementById("firstGuess").style.display = "none";
   document.getElementById("secondGuess").style.display = "none";
+  document.getElementById("shareResult").style.display = "none";
+  document.getElementById("guessForm").style.display = "block";
   textResult = "Horrordle #"+dayCount+"\n🔪";
 }
 function checkingGuess() {
@@ -107,7 +110,7 @@ streakNumber.textContent = localStorage.getItem('streak');
   if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);}
   if(localStorage.getItem('firstGuess')){firstGuess.textContent = "❌" + localStorage.getItem('firstGuess');document.getElementById("firstGuess").style.display = "block";}
   if(localStorage.getItem('secondGuess')){secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess')){feedback.textContent = "You got it right!";document.getElementById("shareResult").style.display = "block";document.getElementById("guessForm").style.display = "none";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";};
+  if(localStorage.getItem('winningGuess')){feedback.textContent = "You got it right!";document.getElementById("shareResult").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";};
   secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');
 }else {
 clearGuess();
@@ -149,8 +152,8 @@ console.log("day count:" + dayCount);
       feedback.textContent = "You got it right!";
       document.getElementById("shareResult").style.display = "block";
       localStorage.setItem("winningGuess", guess.value);
-      document.getElementById("firstGuess").style.display = "none";
-      document.getElementById("secondGuess").style.display = "none";
+        document.getElementById("firstGuess").style.display = "none";
+  document.getElementById("secondGuess").style.display = "none";
       
       textResult = textResult + "🟩";
       for (var i = 1; i < (3-guessNo); i++) {
@@ -315,6 +318,7 @@ function getArchive(j){
   deathOftheDay();
   clearGuess();
   checkingGuess();
+  // checkGuess();
   firstCheck();
   document.getElementById('guess').value = "";
   location.href='#';
