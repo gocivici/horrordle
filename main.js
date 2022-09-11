@@ -8,10 +8,12 @@ for (var i = 0; i < localStorage.length; i++){
 
 
 
+
+
   var movies = ["a nightmare on elm street","Friday the 13th","Final Destination","Scream 2","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
   var pix = [];
   autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 6, 2022 00:00:00');
+  var gameBeginning = new Date('September 8, 2022 00:00:00');
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   console.log(gameBeginning.getTimezoneOffset());
   var present_date = new Date();
@@ -63,10 +65,15 @@ function markCalendar() {
 
 var points = "⬛⬛⬛"
 //check if the user played this before
-  var guessNo = 0;
+firstCheck()
+function firstCheck(){
+  guessNo = 0;
   feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
   if(!localStorage.getItem('streak')){localStorage.setItem('streak',0)}
-
+  if(!localStorage.getItem('firstGuessStat')){localStorage.setItem('firstGuessStat',0)}
+  if(!localStorage.getItem('secondGuessStat')){localStorage.setItem('secondGuessStat',0)}
+  if(!localStorage.getItem('thirdGuessStat')){localStorage.setItem('thirdGuessStat',0)}
+}
 
 
 
@@ -79,6 +86,9 @@ function clearGuess() {
   localStorage.removeItem('guessNo');
   localStorage.removeItem('winningGuess');
   localStorage.removeItem('result');
+  document.getElementById("firstGuess").style.display = "none";
+  document.getElementById("secondGuess").style.display = "none";
+  textResult = "Horrordle #"+dayCount+"\n🔪";
 }
 function checkingGuess() {
   
@@ -124,9 +134,13 @@ checkingGuess();
   }
 
   function checkGuess() {
+    
 console.log("day count:" + dayCount);
     let myGuess = guess.value
     if (myGuess === movieOfTheDay) {
+      if(guessNo==0){localStorage.setItem('firstGuessStat',parseInt(localStorage.getItem('firstGuessStat')) + 1);}
+      if(guessNo==1){localStorage.setItem('secondGuessStat',parseInt(localStorage.getItem('secondGuessStat')) + 1);}
+      if(guessNo==2){localStorage.setItem('thirdGuessStat',parseInt(localStorage.getItem('thirdGuessStat')) + 1);}
       localStorage.setItem('streak',parseInt(localStorage.getItem('streak')) + 1);
       localStorage.setItem('day'+dayCount,'true');
       console.log(localStorage.getItem('day'+dayCount));
@@ -135,6 +149,9 @@ console.log("day count:" + dayCount);
       feedback.textContent = "You got it right!";
       document.getElementById("shareResult").style.display = "block";
       localStorage.setItem("winningGuess", guess.value);
+      document.getElementById("firstGuess").style.display = "none";
+      document.getElementById("secondGuess").style.display = "none";
+      
       textResult = textResult + "🟩";
       for (var i = 1; i < (3-guessNo); i++) {
         textResult = textResult + "⬛";
@@ -145,7 +162,7 @@ console.log("day count:" + dayCount);
     } else if(guessNo==1){
       guessNo = guessNo + 1;
       localStorage.setItem('guessNo', guessNo);
-      feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaning";
+      feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
       document.getElementById("movieFrame").src = pix[guessNo];
       firstGuess.textContent = "❌" + guess.value;
       localStorage.setItem('firstGuess', guess.value);
@@ -155,7 +172,7 @@ console.log("day count:" + dayCount);
     }else if(guessNo<2){
       guessNo = guessNo + 1;
       localStorage.setItem('guessNo', guessNo);
-      feedback.textContent =  "🩸 " + (3-guessNo) + " guesses remaning";
+      feedback.textContent =  "🩸 " + (3-guessNo) + " guesses remaining";
       document.getElementById("movieFrame").src = pix[guessNo];
       secondGuess.textContent = "❌" + guess.value;
       localStorage.setItem('secondGuess', guess.value);
@@ -173,7 +190,7 @@ console.log("day count:" + dayCount);
 
     }
     console.log(textResult);
-
+    document.getElementById("guessForm").reset();
  }
 
 
@@ -298,6 +315,7 @@ function getArchive(j){
   deathOftheDay();
   clearGuess();
   checkingGuess();
+  firstCheck();
   document.getElementById('guess').value = "";
   location.href='#';
   //window.open("#");
@@ -306,3 +324,41 @@ function getArchive(j){
 
 
  submitGuess.addEventListener('click', checkGuess)
+
+ const labels = [
+  'First Guess',
+  'Second Guess',
+  'Third Guess',
+];
+
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Number of guesses',
+    backgroundColor: 'rgb(255, 99, 132)',
+    fontColor: 'white',
+    color:'white',
+    data: [localStorage.getItem('firstGuessStat'), localStorage.getItem('secondGuessStat'), localStorage.getItem('thirdGuessStat')],
+  }]
+};
+
+Chart.defaults.color='white'
+Chart.defaults.borderColor='grey'
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    scales:{
+      yAxes:{
+        ticks:{
+          stepSize:1
+        }
+      }
+    }
+  }
+};
+
+const myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);

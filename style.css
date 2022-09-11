@@ -18,6 +18,14 @@
   opacity: 0;
   z-index: 99;
 }
+#streakNumber{
+  text-align: center;
+  margin-top: 0;
+}
+
+h3 {
+  text-align: center;
+}
 
 .InstructionText{
 position: absolute;
