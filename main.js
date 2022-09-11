@@ -82,19 +82,19 @@ function firstCheck(){
 
 
 
-
+textResult = "Horrordle #"+dayCount+"\n🔪";
 function clearGuess() {
   localStorage.removeItem('firstGuess');
   localStorage.removeItem('secondGuess');
   localStorage.removeItem('guessNo');
   localStorage.removeItem('winningGuess');
-  localStorage.removeItem('result');
+  // localStorage.removeItem('result');
   document.getElementById("firstGuess").style.display = "none";
   document.getElementById("secondGuess").style.display = "none";
   document.getElementById("shareResult").style.display = "none";
   document.getElementById("guessForm").style.display = "block";
   document.getElementById("countDown").style.display = "none"
-  textResult = "Horrordle #"+dayCount+"\n🔪";
+  
 }
 function checkingGuess() {
   
@@ -152,7 +152,7 @@ console.log("day count:" + dayCount);
       console.log(localStorage.getItem('day'+dayCount));
       streakNumber.textContent = " " + localStorage.getItem('streak');
       document.getElementById("guessForm").style.display = "none";
-      document.getElementById("movieName").innerHTML = "✔️ " + movieOfTheDay + " ✔️";
+      document.getElementById("movieName").innerHTML = movieOfTheDay + " ✅";
       document.getElementById("countDown").style.display = "block";
       document.getElementById("shareResult").style.display = "block";
       localStorage.setItem("winningGuess", guess.value);
