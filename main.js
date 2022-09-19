@@ -1,5 +1,12 @@
+//<TO-DO>
+//-FIX TIMER
+//-FIX IMAGE RATIOS
+//-FIX CALENDAR
 //
-  window.onload = deathOftheDay;
+// var fake_date = new Date("September 19, 2022 23:58:00");
+// Date = function(){return fake_date;}; 
+// Date.now = () => fake_date.getTime();
+window.onload = deathOftheDay;
 var playedBefore = false;
 var sameDay = false;
 for (var i = 0; i < localStorage.length; i++){
@@ -13,17 +20,22 @@ for (var i = 0; i < localStorage.length; i++){
   var movies = ["A Nightmare on Elm Street","Friday the 13th","Event Horizon","Hellraiser","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
   var pix = [];
   autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 9, 2022 24:00:00');
+  var gameBeginning = new Date('September 18, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
 
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   console.log(gameBeginning.getTimezoneOffset());
-  
+  dayCounter();
   console.log("gameBeginning: ",gameBeginning);
   console.log("now: ",present_date);
-  var dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
+  
 var textResult = "Horrordle #"+dayCount+"\n🔪";
+
+function dayCounter(){
+  dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
+  return dayCount;
+}
 
 markCalendar();
 
@@ -149,6 +161,7 @@ console.log("day count:" + dayCount);
       if(guessNo==2){localStorage.setItem('thirdGuessStat',parseInt(localStorage.getItem('thirdGuessStat')) + 1);}
       localStorage.setItem('streak',parseInt(localStorage.getItem('streak')) + 1);
       localStorage.setItem('day'+dayCount,'true');
+      // document.getElementById("movieFrame").src = "images/"+movieOfTheDay+"/poster.jpg";
       console.log(localStorage.getItem('day'+dayCount));
       streakNumber.textContent = " " + localStorage.getItem('streak');
       document.getElementById("guessForm").style.display = "none";
@@ -372,11 +385,15 @@ const config = {
 
 var x = setInterval(function() {
   // countDownTime.setDate(Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24))+2);
-  countDownTime.setDate(present_date.getDate()+1);
-  countDownTime.setHours(24);
+  dayCounter();
+  
+  dateVariable = present_date.getDate()
+  countDownTime.setDate(dateVariable+1);
+  countDownTime.setHours(0);
   countDownTime.setMinutes(0);
   countDownTime.setSeconds(0);
   var now = new Date();
+  console.log("now: ",now);
   var remainingTime = countDownTime - now;
   const second = 1000;
   const minute = second * 60;
@@ -387,11 +404,17 @@ var x = setInterval(function() {
   secondsLeft = Math.trunc((remainingTime % minute) / second);
 document.getElementById("countDown").innerHTML =  hoursLeft + "h "
 + minutesLeft + "m " + secondsLeft + "s ";
-if (remainingTime < 0) {
-  //  window.location.reload();
+//console.log(remainingTime);
+console.log(localStorage.getItem('day'));
+console.log("day count: " + dayCount);
+dayCount = Math.floor((now - gameBeginning) / (1000 * 60 * 60 * 24));
+if (localStorage.getItem('day')!=dayCount)  {
+    window.location.reload();
 }
 }, 1000);
+
 const myChart = new Chart(
   document.getElementById('myChart'),
   config
 );
+//window.localStorage.clear();
