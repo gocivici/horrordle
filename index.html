@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="autoComplete.css">
   <title> test </title>
 </head>
 <div class="topnav">
@@ -40,17 +41,20 @@
         <div class="InstructionText">
         <p>Use the death scene provided to guess the name of the movie.</p>
         </div>
-
+      </div>
+      <div class="content">
         <i class="fas fa-skull"></i>
         <div class="InstructionText">
         <p>If you guess wrong a new death
          scene from the movie is revealed but you will use 1 point.</p>
         </div>
-
+      </div>
+      <div class="content">
       <i class="fas fa-tint"></i>
       <div class="InstructionText">
         <p>You have a maximum of 3 guesses to find the movie.</p>
       </div>
+    </div>
    </div>
   	</div>
   </div>
@@ -58,7 +62,7 @@
   <div id="stats" class="overlay">
     <div class="popup">
       <h2>Stats</h2>
-      <div>
+      <div class="chartNumber">
         <canvas id="myChart"></canvas>
       </div>
       <a class="close" href="#">&times;</a>
@@ -147,7 +151,7 @@
 
   <!-- <h1>Guess the Movie!</h1> -->
   <figure class="movie-img">
-<img src="" id="movieFrame" alt="movie death frame" class="center">
+<img src="images/images.png" id="movieFrame" alt="movie death frame" class="center">
   </figure>
 
 
@@ -155,8 +159,8 @@
   <form id="guessForm" autocomplete="off">
     <div class="autocomplete">
         <!-- <label for="guess">Movie:</label> -->
-        <input type="text" id="guess" placeholder="Movie">
-        <input type="button" id="submitGuess" value="Submit Guess">
+        <input class="guess" type="text" id="autoComplete" placeholder="Movie">
+        <input type="button" id="submitGuess" value="Submit">
     </div>
     
   </form>
@@ -173,6 +177,8 @@
   <div id="thirdGuess"></div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+
   <script src="main.js"></script>
 
 <!-- <footer class="footer">

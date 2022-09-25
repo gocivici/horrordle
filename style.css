@@ -1,11 +1,22 @@
 * { box-sizing: border-box; }
 
-
+.fa-tint{
+  padding-left: 21.625px !important;
+  padding-right: 21.625px !important;
+}
 .content{
   width: 100%;
   position: relative;
-  margin: 30px 0;
+  display: table;
+  /* margin: 30px 0; */
 }
+.chartNumber{
+    position: relative;
+    margin: auto;
+    height: 50%;
+    width: 60%;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -28,9 +39,10 @@ h3 {
 }
 
 .InstructionText{
-position: absolute;
-margin-left: 65px;
-margin-top: -50px;
+  display: block;
+  width: 80%;
+  display: table-cell;
+  vertical-align: middle;
 
 }
 .overlay:target {
@@ -51,10 +63,13 @@ margin-top: -50px;
 .popup i{
   padding: 14px 16px;
   font-size: 36px;
-  display: flex;
-
-align-items: center;
+  display: block;
+  width: 20%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 }
+
 .popup h2 {
   margin-top: 0;
   color: white;
@@ -100,7 +115,7 @@ body {
   background-color: #121212;
   color: white;
   font: 16px Arial;
-display:flex; flex-direction:column; justify-content:center;
+/* display:flex; flex-direction:column; justify-content:center; */
 text-align: center;
 }
 p {
