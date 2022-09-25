@@ -17,7 +17,18 @@ for (var i = 0; i < localStorage.length; i++){
   console.log(localStorage.key(i));
 }
 
-
+function revealButtons(g = guessNo){
+  picButtons = document.getElementsByClassName('imageButton');
+  picButtons[g].classList.add('active');
+  for (var i = 0; i <= g; i++){
+    console.log("revealButton guess no " + guessNo);
+     picButtons[i].style.display = "inline";
+     picButtons[i].classList.remove('active');
+  }
+  picButtons[g].classList.add('active');
+}
+// document.getElementById("button2").style.display = "none"
+// document.getElementById("button3").style.display = "none"
 
 
 
@@ -85,7 +96,8 @@ function markCalendar() {
 
 var points = "⬛⬛⬛"
 //check if the user played this before
-firstCheck()
+firstCheck();
+revealButtons();
 function firstCheck(){
   guessNo = 0;
   feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
@@ -133,8 +145,9 @@ streakNumber.textContent = localStorage.getItem('streak');
   if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);document.getElementById("resultText").innerHTML =textResult}
   if(localStorage.getItem('firstGuess')){firstGuess.textContent = "❌" + localStorage.getItem('firstGuess');document.getElementById("firstGuess").style.display = "block";}
   if(localStorage.getItem('secondGuess')){secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess')){document.getElementById("feedback").innerHTML = "Next movie will reveal at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";document.getElementById("resultText").style.display="none";};
+  if(localStorage.getItem('winningGuess')){revealButtons(2);document.getElementById("feedback").innerHTML = "Next movie will reveal at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";document.getElementById("resultText").style.display="none";};
   secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');
+  revealButtons();
 }else {
 clearGuess();
 localStorage.setItem('day', dayCount);
@@ -158,7 +171,23 @@ window.onload = deathOftheDay();
     }
     console.log('Movie: ', movieOfTheDay);
     console.log('Array: ', pix);
-    document.getElementById("movieFrame").src = pix[guessNo];
+    showPic();
+
+    // picButton = document.getElementsByClassName('picButton');
+    // picButton.setAttribute('onclick','getImage()');
+  }
+
+  function showPic(p=guessNo){
+    document.getElementById("movieFrame").src = pix[p];
+    picButtons = document.getElementsByClassName('imageButton');
+    for (let i=0; i<3; i++){
+      picButtons[i].classList.remove('active');
+    }
+    picButtons[p].classList.add('active');
+    // for (let i = 0; i < 2; i++) {
+    //   const element = array[i];
+      
+    // }
   }
 
   function checkGuess() {
@@ -191,7 +220,7 @@ console.log("day count:" + dayCount);
       document.getElementById("feedback").innerHTML = "Next movie revealed at midnight! 🕛 <br>";
       document.getElementById("resultText").innerHTML = textResult;
       dates[dayCount-1].classList.add('won');
-
+      revealButtons(2);
 
     } else if(guessNo==1){
       guessNo = guessNo + 1;
@@ -203,6 +232,7 @@ console.log("day count:" + dayCount);
       document.getElementById("firstGuess").style.display = "block";
       textResult = textResult + "🟥";
       localStorage.setItem('result', textResult);
+      revealButtons();
     }else if(guessNo<2){
       guessNo = guessNo + 1;
       localStorage.setItem('guessNo', guessNo);
@@ -213,6 +243,7 @@ console.log("day count:" + dayCount);
       document.getElementById("secondGuess").style.display = "block";
       textResult = textResult + "🟥";
       localStorage.setItem('result', textResult);
+      revealButtons();
     }
      else{
       feedback.textContent = "GAME OVER";
@@ -316,7 +347,7 @@ const config = {
   type: 'bar',
   data: data,
   options: {
-    maintainAspectRatio: false,
+    // maintainAspectRatio: false,
     scales:{
       yAxes:{
         ticks:{
