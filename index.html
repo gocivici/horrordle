@@ -121,7 +121,11 @@
           <div class="calendar__number">31</div>
         </div>
       </div>
+      
     </div>
+   
+    <button onclick="window.localStorage.clear();"class="resetButton">Reset Stats</button>
+  
     </div>
   </div>
 
@@ -153,15 +157,20 @@
 
   <!-- <h1>Guess the Movie!</h1> -->
   <figure class="movie-img">
-<img src="images/images.png" id="movieFrame" alt="movie death frame" class="center">
+<img src="images/images.jpg" id="movieFrame" alt="movie death frame" class="center">
   </figure>
+
+
+  <h1 id="movieName"></h1>
+  <h2 id="bonusQuestion"></h2>
+  
   <div class="picButtons">
-  <button onclick="showPic(0)" id="button1" class="imageButton">1</button>
- <button onclick="showPic(1)" id="button2" class="imageButton">2</button>
- <button onclick="showPic(2)" id="button3" class="imageButton">3</button>
-</div>
-
-
+    <button onclick="showPic(0)" id="button1" class="imageButton">1</button>
+   <button onclick="showPic(1)" id="button2" class="imageButton">2</button>
+   <button onclick="showPic(2)" id="button3" class="imageButton">3</button>
+  </div>
+  <input onclick="submitBonus()" type="button" id="submitBonusGuess" value="Submit">
+  <input onclick="submitBonus(1)" type="button" id="skipBonusGuess" value="Skip">
 
   <form id="guessForm" autocomplete="off">
     <div class="autocomplete">
@@ -171,7 +180,7 @@
     </div>
     
   </form>
-  <h1 id="movieName"></h1>
+  
   <p id="feedback"></p>
   <h2 id="countDown"></h2>
   <div class="result">

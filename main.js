@@ -10,7 +10,13 @@
 //pre-load images
 //image placeholder
 // gameover movie name
+ if(!localStorage.getItem('playedBefore')){
+  // window.location = window.location.href + "#info";
+  window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
+ }
 
+var buttonNo = 0;
+bonusRoundState = false;
 var playedBefore = false;
 var sameDay = false;
 for (var i = 0; i < localStorage.length; i++){
@@ -25,14 +31,15 @@ function revealButtons(g = guessNo){
      picButtons[i].style.display = "inline";
      picButtons[i].classList.remove('active');
   }
-  picButtons[g].classList.add('active');
+  showPic();
+  // picButtons[g].classList.add('active');
 }
 // document.getElementById("button2").style.display = "none"
 // document.getElementById("button3").style.display = "none"
 
 
 
-  var movies = ["A Nightmare on Elm Street","Friday the 13th","Event Horizon","Hellraiser","The Cabin in the Woods","American Psycho","It Follows","Candyman","Child's Play","The Texas Chain Saw Massacre","Alien","Halloween"];
+  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["The Cabin in the Woods",2],["American Psycho",0]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
   var gameBeginning = new Date('September 24, 2022 00:00:00');
@@ -117,6 +124,7 @@ function clearGuess() {
   localStorage.removeItem('secondGuess');
   localStorage.removeItem('guessNo');
   localStorage.removeItem('winningGuess');
+  localStorage.removeItem('movieName');
   localStorage.removeItem("playedToday");
   // localStorage.removeItem('result');
   document.getElementById("firstGuess").style.display = "none";
@@ -137,6 +145,8 @@ streakNumber.textContent = localStorage.getItem('streak');
 
   playedBefore = true;
   textResult=localStorage.getItem('result')
+  document.getElementById("movieName").innerHTML = localStorage.getItem('movieName')
+  
   console.log("played before: ",playedBefore);
   console.log(localStorage.getItem('firstGuess'));
   console.log(localStorage.getItem('secondGuess'));
@@ -145,7 +155,7 @@ streakNumber.textContent = localStorage.getItem('streak');
   if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);document.getElementById("resultText").innerHTML =textResult}
   if(localStorage.getItem('firstGuess')){firstGuess.textContent = "❌" + localStorage.getItem('firstGuess');document.getElementById("firstGuess").style.display = "block";}
   if(localStorage.getItem('secondGuess')){secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess')){revealButtons(2);document.getElementById("feedback").innerHTML = "Next movie will reveal at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";document.getElementById("resultText").style.display="none";};
+  if(localStorage.getItem('winningGuess')){document.getElementsByClassName("picButtons")[0].style.display="none";revealButtons(2);document.getElementById("feedback").innerHTML = "Next movie will reveal at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";document.getElementById("resultText").style.display="none";};
   secondGuess.textContent = "❌" + localStorage.getItem('secondGuess');
   revealButtons();
 }else {
@@ -166,10 +176,10 @@ window.onload = deathOftheDay();
    movieOfTheDay = movies[x-1];
 
     for (let i = 1; i < 4; i++) {
-      pix.push("images/"+movieOfTheDay+"/"+i+".png");
-      preloadImage("images/"+movieOfTheDay+"/"+i+".png");
+      pix.push("images/"+movieOfTheDay[0]+"/"+i+".png");
+      preloadImage("images/"+movieOfTheDay[0]+"/"+i+".png");
     }
-    console.log('Movie: ', movieOfTheDay);
+    console.log('Movie: ', movieOfTheDay[0]);
     console.log('Array: ', pix);
     showPic();
 
@@ -179,6 +189,7 @@ window.onload = deathOftheDay();
 
   function showPic(p=guessNo){
     document.getElementById("movieFrame").src = pix[p];
+    buttonNo = p;
     picButtons = document.getElementsByClassName('imageButton');
     for (let i=0; i<3; i++){
       picButtons[i].classList.remove('active');
@@ -190,11 +201,40 @@ window.onload = deathOftheDay();
     // }
   }
 
+  function submitBonus(b=0){
+    if (buttonNo==movieOfTheDay[1]&&b==0) {
+      bonusRoundState= true;
+      // document.getElementById("bonusQuestion").style.display="none";
+      document.getElementById("bonusQuestion").innerHTML = "Survivor: "+ movieOfTheDay[2] + " ⭐";
+
+      textResult = textResult + "[⭐]"
+      console.log("you win!")
+    }
+    else{
+      console.log('you lose')
+      document.getElementById("bonusQuestion").innerHTML = "Survivor: "+ movieOfTheDay[2];
+
+
+    }
+    localStorage.setItem('result', textResult);
+    document.getElementById("feedback").style.display = "block";
+    document.getElementById("feedback").innerHTML = "Next movie revealed at midnight! 🕛 <br>";
+    document.getElementById("resultText").innerHTML = textResult;
+    document.getElementById("countDown").style.display = "block";
+    document.getElementById("shareResult").style.display = "block";
+    document.getElementById("submitBonusGuess").style.display="none";
+    document.getElementById("skipBonusGuess").style.display="none";
+    document.getElementsByClassName("picButtons")[0].style.display="none";
+    showPic(movieOfTheDay[1])
+    console.log(buttonNo);
+  }
+
   function checkGuess() {
+    localStorage.setItem('playedBefore','true');
     
 console.log("day count:" + dayCount);
     let myGuess = guess
-    if (myGuess === movieOfTheDay) {
+    if (myGuess === movieOfTheDay[0]) {
       if(guessNo==0){localStorage.setItem('firstGuessStat',parseInt(localStorage.getItem('firstGuessStat')) + 1);}
       if(guessNo==1){localStorage.setItem('secondGuessStat',parseInt(localStorage.getItem('secondGuessStat')) + 1);}
       if(guessNo==2){localStorage.setItem('thirdGuessStat',parseInt(localStorage.getItem('thirdGuessStat')) + 1);}
@@ -204,21 +244,32 @@ console.log("day count:" + dayCount);
       console.log(localStorage.getItem('day'+dayCount));
       streakNumber.textContent = " " + localStorage.getItem('streak');
       document.getElementById("guessForm").style.display = "none";
-      document.getElementById("movieName").innerHTML = movieOfTheDay + " ✅";
-      document.getElementById("countDown").style.display = "block";
-      document.getElementById("shareResult").style.display = "block";
-      localStorage.setItem("winningGuess", guess);
-      localStorage.setItem("playedToday", "yes");
-        document.getElementById("firstGuess").style.display = "none";
-  document.getElementById("secondGuess").style.display = "none";
+      document.getElementById("feedback").style.display = "none";
+      document.getElementById("movieName").innerHTML = movieOfTheDay[0] + " ✅";
       
+      localStorage.setItem('movieName', movieOfTheDay[0] + " ✅")
+      document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess the survivor?";
+      document.getElementById("submitBonusGuess").style.display = "inline";
+      document.getElementById("skipBonusGuess").style.display = "inline";
       textResult = textResult + "🟩";
       for (var i = 1; i < (3-guessNo); i++) {
         textResult = textResult + "⬛";
       }
       localStorage.setItem('result', textResult);
-      document.getElementById("feedback").innerHTML = "Next movie revealed at midnight! 🕛 <br>";
-      document.getElementById("resultText").innerHTML = textResult;
+      // document.getElementById("countDown").style.display = "block";
+      // document.getElementById("shareResult").style.display = "block";
+      // document.getElementsByClassName("picButtons")[0].classList.add('bonusScreen')
+      tempButton = document.getElementsByClassName("imageButton");
+      for (let i = 0; i < 3; i++) {
+        tempButton[i].classList.add("bonusScreen");
+      }
+      document.getElementsByClassName("imageButton")[0].style.fontSize = "32px";
+      localStorage.setItem("winningGuess", guess);
+      localStorage.setItem("playedToday", "yes");
+        document.getElementById("firstGuess").style.display = "none";
+  document.getElementById("secondGuess").style.display = "none";
+      
+
       dates[dayCount-1].classList.add('won');
       revealButtons(2);
 
@@ -263,8 +314,9 @@ console.log("day count:" + dayCount);
 
  const autoCompleteJS = new autoComplete({
   placeHolder: "Search for Movies...",
+  // wrapper: false,
   data: {
-      src: movies
+      src: movies.map(movies => movies[0])
   },
   resultItem: {
       highlight: true,
