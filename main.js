@@ -12,7 +12,8 @@
 // gameover movie name
  if(!localStorage.getItem('playedBefore')){
   // window.location = window.location.href + "#info";
-  window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
+  window.location = "https://gorkem.cc/horo#info"
+  localStorage.setItem('playedBefore',"true");
  }
 
 var buttonNo = 0;
@@ -52,8 +53,8 @@ function revealButtons(g = guessNo){
   console.log("gameBeginning: ",gameBeginning);
   console.log("now: ",present_date);
   
-var textResult = "Horrordle #"+dayCount+"\n🔪";
-console.log(textResult);
+
+// console.log(textResult);
 function dayCounter(){
   dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
   return dayCount;
@@ -118,7 +119,7 @@ function firstCheck(){
 
 
 
-textResult = "Horrordle #"+dayCount+"\n🔪";
+
 function clearGuess() {
   localStorage.removeItem('firstGuess');
   localStorage.removeItem('secondGuess');
@@ -220,6 +221,7 @@ window.onload = deathOftheDay();
     document.getElementById("feedback").style.display = "block";
     document.getElementById("feedback").innerHTML = "Next movie revealed at midnight! 🕛 <br>";
     document.getElementById("resultText").innerHTML = textResult;
+    document.getElementById("resultText").style.display="block";
     document.getElementById("countDown").style.display = "block";
     document.getElementById("shareResult").style.display = "block";
     document.getElementById("submitBonusGuess").style.display="none";
@@ -228,13 +230,15 @@ window.onload = deathOftheDay();
     showPic(movieOfTheDay[1])
     console.log(buttonNo);
   }
-
+  textResult = "Horrordle #"+dayCount+"\n🔪";
   function checkGuess() {
     localStorage.setItem('playedBefore','true');
     
 console.log("day count:" + dayCount);
     let myGuess = guess
+   
     if (myGuess === movieOfTheDay[0]) {
+      
       if(guessNo==0){localStorage.setItem('firstGuessStat',parseInt(localStorage.getItem('firstGuessStat')) + 1);}
       if(guessNo==1){localStorage.setItem('secondGuessStat',parseInt(localStorage.getItem('secondGuessStat')) + 1);}
       if(guessNo==2){localStorage.setItem('thirdGuessStat',parseInt(localStorage.getItem('thirdGuessStat')) + 1);}
