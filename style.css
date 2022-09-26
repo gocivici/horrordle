@@ -5,6 +5,130 @@
 /* #movieName,#bonusQuestion{
   display: none;
 } */
+
+.movie-img {
+
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.loading {
+  position: absolute;
+  /* z-index: 999; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* overflow: visible;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle; */
+  /* top:0;
+  left: 0;
+  bottom: 0;
+  right: 0; */
+}
+
+/* Transparent Overlay */
+
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
 .imageButton{
   
     background-color: #3a3a3a; /* Green */
@@ -28,8 +152,8 @@
   display: block;
    margin-left: auto;
   margin-right: auto; 
-  margin-top: 5px;
-  margin-bottom: 5px;
+  /* margin-top: 5px;
+  margin-bottom: 5px; */
   padding: 25px 10px;
   height: 78px; 
   width: 68px; 
@@ -47,7 +171,7 @@
 .resetButton{
   align-items: center;
   display: block;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -67,13 +191,13 @@
   margin-bottom: 20px;
 }
 .fa-tint{
-  color: red;
+  color: rgb(255, 57, 57);
   padding-left: 21.625px !important;
   padding-right: 21.625px !important;
 }
 .fa-star{
   width 68px;
-  color: yellow;
+  color: rgb(206, 206, 0);
   padding-right:13.75px !important;
   padding-left:13.75px !important;
 }
@@ -83,12 +207,12 @@
   display: table;
   /* margin: 30px 0; */
 }
-/* .chartNumber{
+.chartNumber{
     position: relative;
-    margin: auto;
-    height: 50%;
-    width: 60%;
-} */
+    margin-top: 20px;
+    /* height: 50%;
+    width: 60%; */
+}
 
 .overlay {
   position: fixed;
@@ -101,6 +225,7 @@
   visibility: hidden;
   opacity: 0;
   z-index: 99;
+  overflow: auto; 
 }
 #streakNumber{
   text-align: center;
@@ -132,10 +257,10 @@ h3 {
   width: 30%;
   position: relative;
   transition: all 5s ease-in-out;
-  overflow: hidden;
+   /* overflow: auto;  */
 }
 .popup i{
-  padding: 14px 16px;
+  padding: 20px 16px;
   font-size: 36px;
   display: block;
   width: 20%;
@@ -234,6 +359,7 @@ i{
   padding-top: 10px;
   padding-bottom:10px;
   width: 450px;
+  border-radius: 5px;
   /* display: block; */
   margin-left: auto;
   margin-right: auto;
@@ -432,7 +558,7 @@ margin-left: 8px;
   resize: horizontal;
   
   width: 400px;
-  background-color: #fff;
+  background-color: #616E7C;
   box-sizing: border-box;
   box-shadow: 0 5px 50px rgba(#000, 0.5);
   border-radius: 8px;
@@ -454,7 +580,7 @@ margin-left: 8px;
   justify-content: center;
   height: 25px;
   font-weight: 600;
-  color: #262626;
+  color: #F5F7FA;
 
 
 }
@@ -464,24 +590,26 @@ margin-left: 8px;
   align-items: center;
   justify-content: center;
   height: 25px;
-  color: grey;
+  color: #CBD2D9;
   font-style:oblique;
 
 }
 .current{
-  border-style: dashed;
-  background-color: orange;
-  color: white;
+  border-style: solid;
+  /* background-color: orange; */
+  color: grey;
   border-color: black;
   border-width: 2px;
   font-style:normal;
+  /* border-radius: 5px; */
 
 }
 .past{
-  background-color: orange;
+  background-color: #FFA000;
   cursor: pointer;
   color: white;
 font-style:normal;
+border-radius: 5px;
 
 
 }
@@ -489,15 +617,17 @@ font-style:normal;
   /* cursor:none; */
   color: white;
   cursor:default;
-  background-color: green;
+  background-color: #00897B;
 font-style:normal;
+border-radius: 5px;
   /* border-width: 0px; */
 }
 .lost{
   /* cursor:none; */
   color: white;
-  background-color: red;
+  background-color: #C62828;
 font-style:normal;
+border-radius: 5px;
   /* border-width: 0px; */
 }
 
@@ -517,6 +647,29 @@ font-style:normal;
     margin:0 -16.665%;
     width:133.33%;  
   }
+  .InstructionText {
+    font-size: 14px;
+    padding-left: 10px;
+  }
+  .popup{
+    /* padding-left: 5px;
+    padding-right: 5px; */
+  }
+  /* i{
+    padding-left: 5px !important;
+    padding-right: 20px;
+  }
+  .fa-tint{
+    padding-left: 5px !important;
+  }
+  .customIcon{
+    padding-left: 5px;
+    padding-right: 15px;
+    margin-left: -11px;
+  }
+  .fa-star{
+    padding-left: 0px !important;
+  } */
 }
 
 

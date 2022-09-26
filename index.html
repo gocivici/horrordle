@@ -14,7 +14,7 @@
   <div class="subnav">
   <div class="topnav-left">
   <a class="wideInfo" href="#info"><i class="fa fa-question"></i></a>
-  <a class="wideInfo" href="#support"><i class="fa fa-heart"></i></a>
+  
   </div>
 
   <img class="title"  width="300" src="title.png" alt="horror">
@@ -24,6 +24,7 @@
   <div class="topnav-right">
     <a class="mobileInfo" href="#info"><i class="fa fa-question"></i></a>
     <a class="mobileInfo" href="#support"><i class="fa fa-heart"></i></a>
+    <a class="wideInfo" href="#support"><i class="fa fa-heart"></i></a>
     <a href="#stats"><i class="fas fa-chart-bar"></i></a>
   </div>
   </div>
@@ -45,7 +46,7 @@
         <i class="fas fa-tint"></i>
         <div class="InstructionText">
         <p>If you guess wrong a new 
-         scene from the movie is revealed. You have a maximum of 3 guesses to find the movie</p>
+         scene from the movie is revealed. You have a maximum of 3 guesses to find the movie.</p>
         </div>
       </div>
       <div class="content">
@@ -57,7 +58,7 @@
     <div class="content">
       <i class="fas fa-star"></i>
       <div class="InstructionText">
-        <p>If you guess right you'll have the chance to guess who the survivor is in the bonus stage </p>
+        <p>If you win you'll have the chance to guess which image contains the survivor who escapes the movie in the bonus stage.</p>
       </div>
       
     </div>
@@ -68,15 +69,9 @@
   <div id="stats" class="overlay">
     <div class="popup">
       <h2>Stats</h2>
-      <div class="chartNumber">
-        <canvas id="myChart"></canvas>
-      </div>
-      <a class="close" href="#">&times;</a>
-      <h3>Streak</h3>
-      <div id="streakNumber" class="content">
-        your stats
-      </div>
+      <h3>October 2022</h3>
       <div class="archive">
+        
       <div class="calendar">
         <!-- <div class="calendar__picture">
           <h2>18, Sunday</h2>
@@ -130,6 +125,14 @@
       </div>
       
     </div>
+    <div class="chartNumber">
+      <canvas id="myChart"></canvas>
+    </div>
+    <a class="close" href="#">&times;</a>
+    <h3>Streak</h3>
+    <div id="streakNumber" class="content">
+      your stats
+    </div>
    
     <button onclick="window.localStorage.clear();"class="resetButton">Reset Stats</button>
   
@@ -163,8 +166,14 @@
   </div> -->
 
   <!-- <h1>Guess the Movie!</h1> -->
+  
   <figure class="movie-img">
-<img src="images/images.jpg" id="movieFrame" alt="movie death frame" class="center">
+
+    
+
+<img src="images/back.png" id="movieFrame" alt="movie death frame" class="center" >
+<div class="loading" id="loader"></div>
+
   </figure>
 
 
