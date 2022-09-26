@@ -14,11 +14,12 @@
 window.addEventListener ("load", function() {
     loader.style.display = 'none';
 });
+guess='Skipped';
 
  if(!localStorage.getItem('playedBefore')){
   // window.location = window.location.href + "#info";
-  window.location = "https://gorkem.cc/horo#info"
-  // window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
+  // window.location = "https://gorkem.cc/horo#info"
+   window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
   localStorage.setItem('playedBefore',"true");
  }
 
@@ -323,6 +324,7 @@ console.log("day count:" + dayCount);
     console.log(textResult);
     document.getElementById("guessForm").reset();
     markCalendar();
+    guess = "Skipped"
     
  }
 
@@ -356,13 +358,17 @@ console.log("day count:" + dayCount);
     }
 }
 });
+
 autoCompleteJS.input.addEventListener("selection", function (event) {
+  // guess = "skipped"
+  // event.detail.selection.value = "skipped";
   const feedback = event.detail;
   // Prepare User's Selected Value
   guess = event.detail.selection.value
   autoCompleteJS.input.value = guess;
   // Console log autoComplete data feedback
   console.log(event.detail.selection.value);
+  // checkGuess();
 });
 
 function copyToClipboard() {
