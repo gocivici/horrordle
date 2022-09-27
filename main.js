@@ -50,7 +50,7 @@ function revealButtons(g = guessNo){
   var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["The Cabin in the Woods",2],["American Psycho",0]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 24, 2022 00:00:00');
+  var gameBeginning = new Date('September 23, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
 
@@ -241,7 +241,11 @@ window.onload = deathOftheDay();
     console.log(buttonNo);
     addData();
   }
+  if(!localStorage.getItem('result')){
   textResult = "Horrordle #"+dayCount+"\n🔪";
+}else{
+  textResult = localStorage.getItem('result');
+}
   function checkGuess() {
     localStorage.setItem('playedBefore','true');
     
@@ -330,7 +334,7 @@ console.log("day count:" + dayCount);
 
 
  const autoCompleteJS = new autoComplete({
-  placeHolder: "Search for Movies...",
+  placeHolder: "Search for Horror Movies...",
   // wrapper: false,
   data: {
       src: movies.map(movies => movies[0])
@@ -368,7 +372,7 @@ autoCompleteJS.input.addEventListener("selection", function (event) {
   autoCompleteJS.input.value = guess;
   // Console log autoComplete data feedback
   console.log(event.detail.selection.value);
-  // checkGuess();
+  checkGuess();
 });
 
 function copyToClipboard() {
@@ -393,7 +397,7 @@ function getArchive(j,d = dayCount){
 
 
 
- submitGuess.addEventListener('click', checkGuess)
+  submitGuess.addEventListener('click', checkGuess)
 
  const labels = [
   'First Guess',
