@@ -130,9 +130,9 @@
     </div>
     <a class="close" href="#">&times;</a>
     <h3>Streak</h3>
-    <div id="streakNumber" class="content">
+    <!-- <div id="streakNumber" class="content">
       your stats
-    </div>
+    </div> -->
    
     <button onclick="window.localStorage.clear();"class="resetButton">Reset Stats</button>
   
@@ -167,10 +167,46 @@
 
   <!-- <h1>Guess the Movie!</h1> -->
   
+  <div class="resultContainer">
+    <!--  -->
+    <div class="resultImage">
+      <img src="" id="posterFrame">
+
+    </div>
+    <div class="resultStats">
+      <h1 id="congratz">You got it🎉</h1>
+            <table>
+
+        <tr>
+          <td><b>Streak:</b></td>
+          <td id="streakNumber"></td>
+
+  
+        </tr>
+        <tr>
+          <td><b>Win:</b></td>
+          <td id="winPerc"></td>
+        </tr>
+        <tr>
+          <td><b>Plays:</b></td>
+          <td id="totalPlays"></td>
+        </tr>
+        
+      </table>
+      <!-- <p></p>
+      <br>
+      <p></p>
+      <br> -->
+      <!-- <p>🔪🟩⬛⬛[⭐]</p> -->
+      <!-- <br> -->
+      <div class="result">
+        <div id="resultText"></div>
+        <input onclick="copyToClipboard()" type="button" id="shareResult" value="Share Result">
+      </div>
+    </div>
+  </div>
+
   <figure class="movie-img">
-
-    
-
 <img src="images/back.png" id="movieFrame" alt="movie death frame" class="center" >
 <div class="loading" id="loader"></div>
 
@@ -199,10 +235,10 @@
   
   <p id="feedback"></p>
   <h2 id="countDown"></h2>
-  <div class="result">
+  <!-- <div class="result">
     <div id="resultText"></div>
     <input onclick="copyToClipboard()" type="button" id="shareResult" value="Share Result">
-  </div>
+  </div> -->
   <div class="bottomContainer">
   <div id="firstGuess"></div>
   <div id="secondGuess"></div>
