@@ -18,7 +18,7 @@ guess='Skipped';
 
  if(!localStorage.getItem('playedBefore')){
   // window.location = window.location.href + "#info";
-  window.location = "https://gorkem.cc/horo#info"
+  window.location = "https://gocivici.github.io/horrordle/#info"
   //  window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
   localStorage.setItem('playedBefore',"true");
  }
