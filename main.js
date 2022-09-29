@@ -251,7 +251,7 @@ window.onload = deathOftheDay();
     document.getElementsByClassName("resultContainer")[0].style.display="flex";
     localStorage.setItem('result', textResult);
     document.getElementById("feedback").style.display = "block";
-    document.getElementById("feedback").innerHTML = "Next movie revealed at midnight! 🕛 <br>";
+    document.getElementById("feedback").innerHTML = "Next movie at midnight! 🕛 <br>";
     document.getElementById("resultText").innerHTML = textResult;
     document.getElementById("resultText").style.display="block";
     document.getElementById("countDown").style.display = "block";
@@ -289,7 +289,8 @@ console.log("day count:" + dayCount);
       document.getElementById("movieName").innerHTML = movieOfTheDay[0] + " ✅";
       
       localStorage.setItem('movieName', movieOfTheDay[0] + " ✅")
-      document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess the survivor?";
+      // document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess which <b>image</b> contains the survivor?";
+      document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> choose the image with the survivor";
       document.getElementById("submitBonusGuess").style.display = "inline";
       document.getElementById("skipBonusGuess").style.display = "inline";
       textResult = textResult + "🟩";
