@@ -49,7 +49,7 @@ function revealButtons(g = guessNo){
 
 
 
-  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["The Cabin in the Woods",2],["American Psycho",0]];
+  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["Nightmare on Elm Street",1,"Nancy Thompson"],["The Cabin in the Woods",2],["American Psycho",0]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
   var gameBeginning = new Date('September 24, 2022 00:00:00');
