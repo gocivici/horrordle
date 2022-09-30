@@ -18,8 +18,8 @@ guess='Skipped';
 
  if(!localStorage.getItem('playedBefore')){
   // window.location = window.location.href + "#info";
-  window.location = "https://gocivici.github.io/horrordle/#info"
-  //  window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
+  // window.location = "https://gocivici.github.io/horrordle/#info"
+   window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
   localStorage.setItem('playedBefore',"true");
  }
 
@@ -52,7 +52,7 @@ function revealButtons(g = guessNo){
   var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["It",1,"Eddie Kaspbrak"],["Rec",2,"Ángela Vidal"],["Saw",1,"Amanda Young"],["Final Destination",2,"Alex Browning"],["The Ring",0,"Rachel Keller"]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 24, 2022 00:00:00');
+  var gameBeginning = new Date('September 25, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
   // var present_date = new Date('September 26, 2022 00:00:00');
@@ -101,7 +101,7 @@ loseCount = 0;
           dates[j] = document.createElement('a');
           //dates[j].setAttribute('href','#');
           if(localStorage.getItem("playedToday")){
-          // dates[j].setAttribute('onclick','getArchive(' + (j+1) +')');
+          dates[j].setAttribute('onclick','getArchive(' + (j+1) +')');
           // dates[j] = "<a href='#'>" + dates[j] + "</a>";
             }
           }
@@ -417,14 +417,14 @@ function copyToClipboard() {
   }
 
 function getArchive(j,d = dayCount){
-
+  // present_date.setDate(j);
   dates[d-1].classList.remove('current');
   d = j;
   dates[j-1].classList.add('current');
   deathOftheDay(j);
   document.getElementById('guess').value = "";
   location.href='#';
-  //window.open("#");
+  window.open("#");
 }
 
 
