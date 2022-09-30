@@ -3,7 +3,7 @@
 //-FIX CALENDAR
 //-ADD SUPPORT PAGE
 //archive doesn't work constanlt refreshing
-// var fake_date = new Date("September 19, 2022 23:58:00");
+// var fake_date = new Date("September 29, 2022 23:58:00");
 // Date = function(){return fake_date;}; 
 // Date.now = () => fake_date.getTime();
 //json sitrgifiy local objects
@@ -55,6 +55,7 @@ function revealButtons(g = guessNo){
   var gameBeginning = new Date('September 24, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
+  // var present_date = new Date('September 26, 2022 00:00:00');
 
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   console.log(gameBeginning.getTimezoneOffset());
@@ -492,7 +493,7 @@ document.getElementById("countDown").innerHTML =  hoursLeft + "h "
 // console.log("day count: " + dayCount);
 dayCount = Math.floor((now - gameBeginning) / (1000 * 60 * 60 * 24));
 if (localStorage.getItem('day')!=dayCount)  {
-    window.location.reload();
+     window.location.reload();
 }
 }, 1000);
 function addData(){
