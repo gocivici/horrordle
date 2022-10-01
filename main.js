@@ -52,7 +52,7 @@ function revealButtons(g = guessNo){
   var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["It",1,"Eddie Kaspbrak"],["Rec",2,"Ángela Vidal"],["Saw",1,"Amanda Young"],["Final Destination",2,"Alex Browning"],["The Ring",0,"Rachel Keller"]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 24, 2022 00:00:00');
+  var gameBeginning = new Date('September 30, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
   // var present_date = new Date('September 26, 2022 00:00:00');
