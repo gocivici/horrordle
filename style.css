@@ -2,6 +2,7 @@
 #button1,#button2,#button3{
  display: none;
 }
+
 /* #movieName,#bonusQuestion{
   display: none;
 } */
@@ -303,7 +304,7 @@ h3 {
 .popup {
   text-align: left;
   margin: 70px auto;
-  padding: 20px;
+  padding: 20px 50px;
   background: #333;
   border-radius: 5px;
   width: 30%;
@@ -358,7 +359,9 @@ h3 {
   /* position: absolute; */
   }
   a {
-    color: white;
+    color: red;
+    background-color: transparent;
+    /* text-decoration: none; */
   }
 
 body {
@@ -370,7 +373,7 @@ body {
 text-align: center;
 }
 p {
-  margin:0;
+  /* margin:0; */
 }
 i{
   font-size: 1.5rem;
@@ -716,6 +719,7 @@ border-radius: 5px;
     padding-left: 10px;
   }
   .popup{
+    padding: 20px;
     /* padding-left: 5px;
     padding-right: 5px; */
   }

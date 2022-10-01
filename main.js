@@ -49,7 +49,7 @@ function revealButtons(g = guessNo){
 
 
 
-  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["It",1,"Eddie Kaspbrak"],["Rec",2,"Ángela Vidal"],["Saw",1,"Amanda Young"],["Final Destination",2,"Alex Browning"],["The Ring",0,"Rachel Keller"]];
+  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It",1,"Eddie Kaspbrak"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["Rec",2,"Ángela Vidal"],["Saw",1,"Amanda Young"],["Final Destination",2,"Alex Browning"],["The Ring",0,"Rachel Keller"]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
   var gameBeginning = new Date('September 30, 2022 00:00:00');
@@ -511,4 +511,11 @@ function preloadImage(url)
     var img=new Image();
     img.src=url;
 };
+function resetFunction() {
+  if (confirm("this will delete all you progress, are you sure?") == true) {
+    window.localStorage.clear();
+  } else {
+
+  } 
+}
 //window.localStorage.clear();
