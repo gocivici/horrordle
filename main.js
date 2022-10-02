@@ -49,7 +49,7 @@ function revealButtons(g = guessNo){
 
 
 
-  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It",1,"Eddie Kaspbrak"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["Rec",2,"Ángela Vidal"],["Saw",1,"Amanda Young"],["Final Destination",2,"Alex Browning"],["The Ring",0,"Rachel Keller"]];
+  var movies = [["The Texas Chainsaw Massacre",1,"Sally Hardesty"],["It",1,"Eddie Kaspbrak"],["A Nightmare on Elm Street",1,"Nancy Thompson"],["The Ring",0,"Rachel Keller"],["It Follows",2,"Jaime Height"],["Friday the 13th",0,"Alice Hardy"],["Event Horizon",2,"Lieutenant Starck"],["Hellraiser",2,"Kirsty Cotton"],["Rec",2,"Ángela Vidal"],["Saw",1,"Amanda Young"],["Final Destination",2,"Alex Browning"],["Scream"],["28 Days Later"],["Fear Street"],["Escape Room"],["The Witch"],["Get Out"],["Suspiria"],["Paranormal Activity"],["Blair Witch"],["Signs"],["Shining"],["Evil Dead"],["Cabin in the Woods"],["Funny Games"],["Strangers"],["Annihilation"],["the Thing"],["Sunshine"],["Alien"],["Halloween"],["Carrie"]];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
   var gameBeginning = new Date('September 30, 2022 00:00:00');
@@ -291,7 +291,7 @@ console.log("day count:" + dayCount);
       
       localStorage.setItem('movieName', movieOfTheDay[0] + " ✅")
       // document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess which <b>image</b> contains the survivor?";
-      document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> choose the image with the survivor";
+      document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Use the buttons below to choose the image with the survivor";
       document.getElementById("submitBonusGuess").style.display = "inline";
       document.getElementById("skipBonusGuess").style.display = "inline";
       textResult = textResult + "🟩";
