@@ -52,9 +52,9 @@ function revealButtons(g = guessNo){
 var movies = [
   ["The Texas Chainsaw Massacre", 1, "Sally Hardesty"],
   ["It", 1, "Eddie Kaspbrak"],
+  ["It Follows", 2, "Jaime Height"],
   ["A Nightmare on Elm Street", 1, "Nancy Thompson"],
   ["The Ring", 0, "Rachel Keller"],
-  ["It Follows", 2, "Jaime Height"],
   ["Friday the 13th", 0, "Alice Hardy"],
   ["Event Horizon", 2, "Lieutenant Starck"],
   ["Hellraiser", 2, "Kirsty Cotton"],
