@@ -349,9 +349,11 @@ h3 {
   font-family: 'Arial', sans-serif;
   font-size: 12px;
   position: relative;
-  bottom: 10px;
+  margin-top: 50px;
+  bottom: 0;
   left: 0;
   right: 0;
+  /* top:50px; */
   width: 100%;
   text-align: center;
   margin: auto;
