@@ -46,6 +46,7 @@ function revealButtons(g = guessNo){
 }
 // document.getElementById("button2").style.display = "none"
 // document.getElementById("button3").style.display = "none"
+// document.getElementById("footer").style.display = "block"
 
 
 
@@ -62,7 +63,7 @@ var movies = [
   ["Hellraiser", 2, "Kirsty Cotton"],
   ["Final Destination", 2, "Alex Browning"],
   ["Annihilation", 2, "Lena"],
-  ["Scream"],
+  ["Scream",0,"Dewey Riley"],
   ["28 Days Later"],
   ["Fear Street"],
   ["Escape Room"],
@@ -1151,7 +1152,8 @@ function clearGuess() {
   document.getElementById("secondGuess").style.display = "none";
   document.getElementById("shareResult").style.display = "none";
   document.getElementById("guessForm").style.display = "block";
-  document.getElementById("countDown").style.display = "none"
+  document.getElementById("countDown").style.display = "none";
+  document.getElementById("footer").style.display = "none";
   
 }
 
@@ -1176,7 +1178,7 @@ streakNumber.textContent =localStorage.getItem('streak');
   if(localStorage.getItem('result')) {localStorage.setItem('result', textResult);}
   if(localStorage.getItem('firstGuess')){firstGuess.textContent = "❌ " + localStorage.getItem('firstGuess');document.getElementById("firstGuess").style.display = "block";}
   if(localStorage.getItem('secondGuess')){secondGuess.textContent = "❌ " + localStorage.getItem('secondGuess');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess')||localStorage.getItem('lost')){document.getElementById("resultText").innerHTML =textResult;document.getElementById("movieFrame").style.display = "none";document.getElementsByClassName("resultContainer")[0].style.display="flex";document.getElementsByClassName("picButtons")[0].style.display="none";revealButtons(2);document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";document.getElementById("resultText").style.display="none";};
+  if(localStorage.getItem('winningGuess')||localStorage.getItem('lost')){document.getElementById("resultText").innerHTML =textResult;document.getElementById("movieFrame").style.display = "none";document.getElementsByClassName("resultContainer")[0].style.display="flex";document.getElementsByClassName("picButtons")[0].style.display="none";revealButtons(2);document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("footer").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("shareResult").style.display = "none";document.getElementById("guessForm").style.display = "block";document.getElementById("resultText").style.display="none";};
   if(localStorage.getItem('lost')){ document.getElementById("congratz").innerHTML = "You lost☠️"; document.getElementsByClassName("resultContainer")[0].style.borderColor = "#C62828";}
   secondGuess.textContent = "❌ " + localStorage.getItem('secondGuess');
   revealButtons();
@@ -1255,6 +1257,7 @@ window.onload = deathOftheDay();
     document.getElementById("resultText").innerHTML = textResult;
     document.getElementById("resultText").style.display="block";
     document.getElementById("countDown").style.display = "block";
+    document.getElementById("footer").style.display = "block";
     document.getElementById("shareResult").style.display = "block";
     document.getElementById("submitBonusGuess").style.display="none";
     document.getElementById("skipBonusGuess").style.display="none";

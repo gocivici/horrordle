@@ -74,6 +74,13 @@
       </div>
       
     </div>
+    <div class="content">
+      <i class="fas fa-calendar-day"></i>
+      <div class="InstructionText">
+        <p>Horrordle will only run through Spooktober! make sure to check everyday until November.</p>
+      </div>
+      
+    </div>
    </div>
   	</div>
   </div>
@@ -156,9 +163,10 @@
       <h2>Support</h2>
       <a class="close" href="#">&times;</a>
         <p>Horrordle is a game for horror fans, inspired by <a href="https://framed.wtf/">Framed</a>, <a href="https://archiguesser.com/">Archiguesser</a>, <a href="https://medium.com/floodgates/the-complete-and-authoritative-list-of-wordle-spinoffs-fb00bfafc448">and all the other spinoffs.</a> </p>
-        <p>Each day a new horror movie is picked from a <a href="https://letterboxd.com/ashby/list/horrordle-october-2022/">curated list</a>. </p>
+        <!-- <p>Each day a new horror movie is picked from a <a href="https://letterboxd.com/ashby/list/horrordle-october-2022/">curated list</a>. </p> -->
         <p>This project is open-source and nowhere near complete. You can access and contribute by visiting the <a href="https://github.com/gocivici/horrordle">GitHub page.</a></p>
-        <p> If you have any suggestions or want to give feedback, you can also contact me on <a href="https://twitter.com/horrordle">twitter</a></p>
+        <p>If you have any suggestions or want to give feedback, you can also contact me on <a href="https://twitter.com/horrordle">twitter</a></p>
+        <p>Designed with ❤️ by <a href="https://gorkem.cc">Görkem</a></p>
       </div>
     </div>
   </div>
@@ -217,6 +225,7 @@
       <div class="result">
         <div id="resultText"></div>
         <input onclick="copyToClipboard()" type="button" id="shareResult" value="Share Result">
+        
       </div>
     </div>
   </div>
@@ -249,29 +258,32 @@
   </form>
   
   <p id="feedback"></p>
-  <h2 id="countDown"></h2>
+  <h2 id="countDown">00h 00m 00s</h2>
+  <div id="footer">
+    <p>❤️horrordle? Follow me on <a href="https://twitter.com/horrordle">twitter!</a></p>
+  
+  
+    <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br /> -->
+  
+  
+   </div> 
   <!-- <div class="result">
     <div id="resultText"></div>
     <input onclick="copyToClipboard()" type="button" id="shareResult" value="Share Result">
   </div> -->
+
   <div class="bottomContainer">
   <div id="firstGuess"></div>
   <div id="secondGuess"></div>
   <div id="thirdGuess"></div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-
-  <script src="main.js"></script>
-
-<!-- <footer class="footer">
-  <p>Designed with ❤️ by <a href="https://ko-fi.com/Gorkem">Görkem</a></p>
 
 
-  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />
 
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
 
-</footer> -->
+ <script src="main.js?2"></script>
 
 </body>
 
