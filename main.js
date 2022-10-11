@@ -1231,6 +1231,7 @@ window.onload = deathOftheDay();
   }
 
   function submitBonus(b=0){
+    plausible('Played');
     if (buttonNo==movieOfTheDay[1]&&b==0) {
       bonusRoundState= true;
       // document.getElementById("bonusQuestion").style.display="none";
@@ -1359,7 +1360,7 @@ console.log("day count:" + dayCount);
       submitBonus(1);
 
     }
-    plausible('Played');
+    
     console.log(textResult);
     document.getElementById("guessForm").reset();
     markCalendar();
@@ -1411,8 +1412,10 @@ autoCompleteJS.input.addEventListener("selection", function (event) {
 });
 
 function copyToClipboard() {
+    plausible('Share');
     navigator.clipboard.writeText("Horrordle #" + dayCount + "\n"+ textResult).then(() => {
       shareResult.value = "copied!";
+      
         // Alert the user that the action took place.
         // Nobody likes hidden stuff being done under the hood!
 
