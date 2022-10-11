@@ -1359,6 +1359,7 @@ console.log("day count:" + dayCount);
       submitBonus(1);
 
     }
+    plausible('Played')
     console.log(textResult);
     document.getElementById("guessForm").reset();
     markCalendar();
