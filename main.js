@@ -71,8 +71,9 @@ var movies = [
   ["The Evil Dead",1,"Ash Williams"],
   ["Malignant",2,"Sydney Lake"],
   ["Suspiria",0,"Suzy Bannion"],
-  ["Doctor Sleep"],
-  ["The Thing"],
+  ["Doctor Sleep",1,"Abra Stone"],
+  ["Annabelle",1,"Mia Form"]
+  ["The Thing",1,"R.J. MacReady"],
   ["Fear Street"],
   ["Escape Room"],
   ["The Shining"],
