@@ -72,7 +72,7 @@ var movies = [
   ["Malignant",2,"Sydney Lake"],
   ["Suspiria",0,"Suzy Bannion"],
   ["Doctor Sleep",1,"Abra Stone"],
-  ["Annabelle",1,"Mia Form"]
+  ["Annabelle",1,"Mia Form"],
   ["The Thing",1,"R.J. MacReady"],
   ["Fear Street"],
   ["Escape Room"],
