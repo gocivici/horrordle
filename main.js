@@ -93,7 +93,6 @@ var movies = [
   ["Onibaba"],
   ["Kwaidan"],
   ["House"],
-  ["Suspiria"],
   ["The Pied Piper"],
   ["The Exorcist"],
   ["The Wicker Man"],
