@@ -1056,7 +1056,7 @@ var movies = [
 ];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 23, 2022 00:00:00');
+  var gameBeginning = new Date('September 30, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
   // var present_date = new Date('September 26, 2022 00:00:00');
