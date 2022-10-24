@@ -75,6 +75,13 @@ var movies = [
   ["Annabelle",1,"Mia Form"],
   ["The Thing",1,"R.J. MacReady"],
   ["Dawn of the Dead",2,"Francine Parker"],
+  ["Videodrome",2,"Bianca O'Blivion"],
+  ["The Invisible Man",2,"Cecilia Kass"],
+  ["Triangle",0,"Jess"],
+  ["10 Cloverfield Lane",1,"Michelle"],
+  ["The Ruins",2,"Amy"],
+  ["28 Days Later",1,"Jim"],
+  ["Halloween",2,"Laurie Strode"],
   ["Escape Room"],
   ["The Shining"],
   ["Psycho"],
@@ -85,7 +92,6 @@ var movies = [
   ["Night of the Living Dead"],
   ["Possession"],
   ["The Cremator"],
-  ["Videodrome"],
   ["Nosferatu"],
   ["Repulsion"],
   ["Evil Dead II"],
@@ -109,7 +115,6 @@ var movies = [
   ["The Unknown"],
   ["Invasion of the Body Snatchers"],
   ["The Fall of the House of Usher"],
-  ["Halloween"],
   ["Jacob's Ladder"],
   ["The Birds"],
   ["Rapture"],
@@ -117,7 +122,6 @@ var movies = [
   ["Eyes Without a Face"],
   ["King Kong"],
   ["Frankenstein"],
-  ["The Invisible Man"],
   ["Invasion of the Body Snatchers"],
   ["An American Werewolf in London"],
   ["Kuroneko"],
@@ -1052,7 +1056,7 @@ var movies = [
 ];
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('September 30, 2022 00:00:00');
+  var gameBeginning = new Date('September 23, 2022 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
   // var present_date = new Date('September 26, 2022 00:00:00');
