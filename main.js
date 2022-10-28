@@ -1064,7 +1064,8 @@ var movies = [
   // autocomplete(document.getElementById("guess"), movies);
   var gameBeginning = new Date('October 1, 2022 00:00:00');
   var countDownTime =  new Date();
-  var present_date = new Date('October 31, 2022 00:00:00');
+  var present_date = new Date();
+  // var present_date = new Date('November 1, 2022 00:00:00');
   // var present_date = new Date('September 26, 2022 00:00:00');
 
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
@@ -1230,7 +1231,8 @@ window.onload = deathOftheDay();
   function deathOftheDay(x=dayCount){
     pix = [];
    movieOfTheDay = movies[x];
-
+    if (x<31){
+      document.getElementById("movieFrame").style.display = "block";
     for (let i = 1; i < 4; i++) {
       pix.push("images/"+movieOfTheDay[0]+"/"+i+".png");
       preloadImage("images/"+movieOfTheDay[0]+"/"+i+".png");
@@ -1240,6 +1242,13 @@ window.onload = deathOftheDay();
     console.log('Movie: ', movieOfTheDay[0]);
     console.log('Array: ', pix);
     showPic();
+  } else{
+    document.getElementById("movieFrame").style.display = "none";
+    document.getElementById("guessForm").style.display = "none";
+    document.getElementsByClassName("picButtons")[0].style.display="none";
+    document.getElementById("movieName").innerHTML = "Thanks for playing Horrordle!";
+    document.getElementById("feedback").innerHTML = "Thanks for playing Horrordle!";
+  }
 
     // picButton = document.getElementsByClassName('picButton');
     // picButton.setAttribute('onclick','getImage()');
@@ -1461,11 +1470,13 @@ function getArchive(j,d = dayCount){
   for (var i = 0; i < dates.length; i++) {
     dates[i].classList.remove('current'); 
   }
-  present_date.setDate(j);
+  present_date.setMonth(9,j);
+  // present_date.setDate(j);
+  console.log(present_date);
   getReady();
   var pix = [];
   dayCounter();
-  // markCalendar();
+  markCalendar();
   var points = "⬛⬛⬛"
   firstCheck();
   clearGuess();
