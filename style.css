@@ -26,6 +26,16 @@
   font-size: 1.5em;
 }
 
+.gif{
+  transform:rotate(60deg);
+  width: 35px;
+  margin-left: 5px;
+  top:2px;
+  padding-right: 5px;
+  position:absolute;
+  display:none;
+}
+
 .resultImage{
   /* padding-right: 8px; */
   display: flex;
@@ -412,6 +422,14 @@ i{
   margin-left: auto;
   margin-right: auto;
 
+}
+#shareResultCalender{
+  background-color: green;
+  margin-top: 20px;
+  bottom: 5px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
 }
 #countDown{
   display: none;
