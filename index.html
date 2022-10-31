@@ -38,7 +38,7 @@
     <a class="mobileInfo" href="#info"><i class="fa fa-question"></i></a>
     <a class="mobileInfo" href="#support"><i class="fa fa-heart"></i></a>
     <a class="wideInfo" href="#support"><i class="fa fa-heart"></i></a>
-    <a href="#stats"><i class="fas fa-chart-bar"></i></a>
+    <a onclick="remember()" href="#stats"><image class="gif" src="new.gif"></image><i class="fas fa-history"></i></a>
   </div>
   </div>
 </div>
@@ -88,7 +88,7 @@
 
   <div id="stats" class="overlay">
     <div class="popup">
-      <h2>Stats</h2>
+      <h2>Archive</h2>
       <h3>October 2022</h3>
       <div class="archive">
         
@@ -146,16 +146,16 @@
       </div>
       
     </div>
-    <div class="chartNumber">
+    <!-- <div class="chartNumber">
       <canvas id="myChart"></canvas>
-    </div>
+    </div> -->
     <a class="close" href="#">&times;</a>
     <!-- <h3>Streak</h3> -->
     <!-- <div id="streakNumber" class="content">
       your stats
     </div> -->
-   
-    <button onclick="resetFunction();"class="resetButton">Reset Stats</button>
+    <input onclick="copyToClipboardCalendar()" type="button" id="shareResultCalender" value="Share Total Result">
+    <!-- <button onclick="resetFunction();"class="resetButton">Reset Stats</button> -->
   
     </div>
   </div>

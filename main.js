@@ -11,6 +11,9 @@
 //image placeholder
 // gameover movie name
 getReady()
+
+
+
 function getReady() {
 
 window.addEventListener ("load", function() {
@@ -24,6 +27,13 @@ guess='Skipped';
   //  window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
   localStorage.setItem('playedBefore',"true");
  }
+
+ if(localStorage.getItem('archiveButtonPressed')){
+
+  document.getElementsByClassName("gif")[0].style.display="none";
+ }
+
+
 
 var buttonNo = 0;
 
@@ -85,8 +95,8 @@ var movies = [
   ["The Invisible Man",2,"Cecilia Kass"],
   ["Triangle",0,"Jess"],
   ["10 Cloverfield Lane",1,"Michelle"],
-  ["The Ruins",2,"Amy"],
   ["28 Days Later",1,"Jim"],
+  ["The Ruins",2,"Amy"],
   ["Halloween",2,"Laurie Strode"],
   ["Escape Room"],
   ["The Shining"],
@@ -1071,6 +1081,9 @@ var movies = [
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   // console.log(gameBeginning.getTimezoneOffset());
   dayCounter();
+  if(dayCount>30){
+    document.getElementsByClassName("gif")[0].style.display="block";
+  }
   // console.log("gameBeginning: ",gameBeginning);
   // console.log("now: ",present_date);
   // console.log("Current dayCount: ", dayCount)
@@ -1080,12 +1093,14 @@ var movies = [
 function dayCounter(){
   dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
   console.log("dayCount: " + dayCount);
+
   return dayCount;
 }
 
 markCalendar();
 
 function markCalendar() {
+  calendarResult="            "
   winCount = 0;
 loseCount = 0;
   dates = document.getElementsByClassName('calendar__number');
@@ -1101,9 +1116,13 @@ loseCount = 0;
           if (localStorage.getItem('day'+(i))) {
             if (localStorage.getItem('day'+(i))=='true') {
                 dates[i].classList.add('won');
+                calendarResult+="🟩"
+                if((i+6)%7==0){calendarResult+="\n"}
                 winCount=winCount + 1;
             } else if (localStorage.getItem('day'+(i))=='false') {
                 dates[i].classList.add('lost');
+                calendarResult+="🟥"
+                if((i+6)%7==0){calendarResult+="\n"}
                 loseCount=loseCount + 1;
             }
 
@@ -1112,6 +1131,8 @@ loseCount = 0;
 
           dates[i].classList.add('past');
           dates[i] = document.createElement('a');
+          calendarResult+="🟧"
+          if((i+6)%7==0){calendarResult+="\n"}
           //dates[j].setAttribute('href','#');
           // if(localStorage.getItem("playedToday")){
           dates[i].setAttribute('onclick','getArchive(' + (i+1) +')');
@@ -1127,6 +1148,8 @@ loseCount = 0;
         // console.log(dates[i]);
       
   }
+  // calendarResult = calendarResult.replace(/(.{8})/g, "$1|");
+  console.log("calo reso"+ calendarResult);
   console.log("win:"+ winCount)
   console.log("lose:"+ loseCount)
   winPerc.textContent = Math.ceil(winCount/(winCount+loseCount)*100)+"%";
@@ -1166,7 +1189,7 @@ function clearGuess() {
   document.getElementById("shareResult").style.display = "none";
   document.getElementById("guessForm").style.display = "block";
   document.getElementById("countDown").style.display = "none";
-  document.getElementById("footer").style.display = "none";
+  // document.getElementById("footer").style.display = "none";
   // document.getElementById("resultText").innerHTML =textResult;
   document.getElementById("movieFrame").style.display = "block";
   document.getElementsByClassName("resultContainer")[0].style.display="none";
@@ -1246,8 +1269,8 @@ window.onload = deathOftheDay();
     document.getElementById("movieFrame").style.display = "none";
     document.getElementById("guessForm").style.display = "none";
     document.getElementsByClassName("picButtons")[0].style.display="none";
-    document.getElementById("movieName").innerHTML = "Thanks for playing Horrordle!";
-    document.getElementById("feedback").innerHTML = "Thanks for playing Horrordle!";
+    document.getElementById("movieName").innerHTML = "<br><br>Thanks for playing!";
+    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='test'>follow me on twitter for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
   }
 
     // picButton = document.getElementsByClassName('picButton');
@@ -1305,7 +1328,7 @@ window.onload = deathOftheDay();
     document.getElementsByClassName("picButtons")[0].style.display="none";
     showPic(movieOfTheDay[1])
     // console.log(buttonNo);
-    addData();
+    // addData();
   }
   setResult();
 function setResult(){
@@ -1465,6 +1488,16 @@ function copyToClipboard() {
 
     });
   }
+  function copyToClipboardCalendar() {
+  
+    navigator.clipboard.writeText("Horrordle 2022: \n" + calendarResult + "").then(() => {
+      shareResultCalender.value = "copied!";
+      
+        // Alert the user that the action took place.
+        // Nobody likes hidden stuff being done under the hood!
+
+    });
+  }
 
 function getArchive(j,d = dayCount){
   for (var i = 0; i < dates.length; i++) {
@@ -1568,16 +1601,16 @@ const config = {
 //     //  window.location.reload();
 // }
 // }, 1000);
-function addData(){
-	myChart.data.datasets[0].data[0] = localStorage.getItem('firstGuessStat');
-  myChart.data.datasets[0].data[1] = localStorage.getItem('secondGuessStat');
-  myChart.data.datasets[0].data[2] = localStorage.getItem('thirdGuessStat');
-  myChart.update();
-}
-const myChart = new Chart(
-  document.getElementById('myChart'),
-  config
-);
+// function addData(){
+// 	myChart.data.datasets[0].data[0] = localStorage.getItem('firstGuessStat');
+//   myChart.data.datasets[0].data[1] = localStorage.getItem('secondGuessStat');
+//   myChart.data.datasets[0].data[2] = localStorage.getItem('thirdGuessStat');
+//   myChart.update();
+// }
+// const myChart = new Chart(
+//   document.getElementById('myChart'),
+//   config
+// );
 function preloadImage(url)
 {
     var img=new Image();
@@ -1589,6 +1622,11 @@ function resetFunction() {
   } else {
 
   } 
+}
+
+function remember(){
+  localStorage.setItem('archiveButtonPressed','true');
+  document.getElementsByClassName("gif")[0].style.display="none";
 }
 
 //window.localStorage.clear();
