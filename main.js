@@ -1270,7 +1270,7 @@ window.onload = deathOftheDay();
     document.getElementById("guessForm").style.display = "none";
     document.getElementsByClassName("picButtons")[0].style.display="none";
     document.getElementById("movieName").innerHTML = "<br><br>Thanks for playing!";
-    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='test'>follow me on twitter for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
+    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='https://twitter.com/horrordle'>follow me on twitter for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
   }
 
     // picButton = document.getElementsByClassName('picButton');
