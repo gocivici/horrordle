@@ -1503,6 +1503,7 @@ function getArchive(j,d = dayCount){
   for (var i = 0; i < dates.length; i++) {
     dates[i].classList.remove('current'); 
   }
+   present_date.setYear(2022);
   present_date.setMonth(9,j);
   // present_date.setDate(j);
   console.log(present_date);
