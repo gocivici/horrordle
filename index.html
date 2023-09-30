@@ -13,8 +13,6 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="twitter:card" content="summary_large_image"></meta>
-  <script defer data-domain="horrordle.com" src="https://plausible.io/js/plausible.js"></script>
-  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
   <meta name="twitter:image" content="http://www.horrordle.com/thumbnail.png">
   <meta name="twitter:site" content="@horrordle"></meta>
   <meta name="twitter:creator" content="@gocivici"></meta>
@@ -38,7 +36,7 @@
     <a class="mobileInfo" href="#info"><i class="fa fa-question"></i></a>
     <a class="mobileInfo" href="#support"><i class="fa fa-heart"></i></a>
     <a class="wideInfo" href="#support"><i class="fa fa-heart"></i></a>
-    <a onclick="remember()" href="#stats"><image class="gif" src="new.gif"></image><i class="fas fa-history"></i></a>
+    <a onclick="remember()" href="#stats"><image class="gif" src="new.gif"></image><i class="fas fa-chart-bar"></i></a>
   </div>
   </div>
 </div>
@@ -110,6 +108,7 @@
           <div class="calendar__number1"></div>
           <div class="calendar__number1"></div>
           <div class="calendar__number1"></div>
+          <div class="calendar__number1"></div>
           <div class="calendar__number">1</div>
           <div class="calendar__number">2</div>
           <div class="calendar__number">3</div>
@@ -141,21 +140,21 @@
           <div class="calendar__number">29</div>
           <div class="calendar__number">30</div>
           <div class="calendar__number">31</div>
-          <div class="calendar__number">1</div>
+
         </div>
       </div>
       
     </div>
-    <!-- <div class="chartNumber">
+    <div class="chartNumber">
       <canvas id="myChart"></canvas>
-    </div> -->
+    </div>
     <a class="close" href="#">&times;</a>
     <!-- <h3>Streak</h3> -->
     <!-- <div id="streakNumber" class="content">
       your stats
     </div> -->
-    <input onclick="copyToClipboardCalendar()" type="button" id="shareResultCalender" value="Share Total Result">
-    <!-- <button onclick="resetFunction();"class="resetButton">Reset Stats</button> -->
+    <!-- <input onclick="copyToClipboardCalendar()" type="button" id="shareResultCalender" value="Share Total Result"> -->
+    <button onclick="resetFunction();"class="resetButton">Reset Stats</button>
   
     </div>
   </div>
@@ -246,6 +245,7 @@
     <button onclick="showPic(0)" id="button1" class="imageButton">1</button>
    <button onclick="showPic(1)" id="button2" class="imageButton">2</button>
    <button onclick="showPic(2)" id="button3" class="imageButton">3</button>
+   <button onclick="showPic(3)" id="button4" class="imageButton bonusScreen">💀</button>
   </div>
   <input onclick="submitBonus()" type="button" id="submitBonusGuess" value="Submit">
   <input onclick="submitBonus(2)" type="button" id="skipBonusGuess" value="Skip">
@@ -260,7 +260,7 @@
   </form>
   
   <p id="feedback"></p>
-  <h2 id="countDown">00h 00m 00s</h2>
+  <h2 id="countDown"></h2>
   <div id="footer">
     <p>❤️horrordle? Follow me on <a href="https://twitter.com/horrordle">twitter!</a></p>
   
@@ -284,8 +284,11 @@
 
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+ <!-- <script data-goatcounter="https://horrordle.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script> -->
 
- <script src="main.js?14"></script>
+ <script src="movieList.js"></script>
+ <script src="main.js?15"></script>
 
 </body>
 

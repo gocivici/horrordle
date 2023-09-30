@@ -2,6 +2,11 @@
 #button1,#button2,#button3{
  display: none;
 }
+#button4{
+  /* width: 80px; */
+  font-size: 27px;
+  height: 60px;
+}
 
 /* #movieName,#bonusQuestion{
   display: none;
@@ -321,7 +326,7 @@ h3 {
   padding: 20px 50px;
   background: #333;
   border-radius: 5px;
-  width: 30%;
+  width: 500px;
   position: relative;
   /* transition: all 1s ease-in-out; */
    /* overflow: auto;  */
@@ -694,11 +699,12 @@ border: 1px solid orangered;
 .current{
   border-style: solid;
   /* background-color: orange; */
-  color: grey;
+  color: white;
+  background-color: grey;
   border-color: black;
   border-width: 2px;
   font-style:normal;
-  /* border-radius: 5px; */
+  border-radius: 5px;
 
 }
 .past{
