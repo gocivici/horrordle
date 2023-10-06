@@ -421,7 +421,7 @@ function setResult(){
       localStorage.setItem('day_'+dayCount,'false');
       localStorage.setItem("lost_", "yes");
       localStorage.setItem("playedToday_", "yes");
-      dates[dayCount-1].classList.add('lost');
+      dates[dayCount].classList.add('lost');
       submitBonus(1);
 
     }
