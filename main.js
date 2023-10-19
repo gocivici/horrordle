@@ -248,19 +248,41 @@ checkingGuess();
   // console.log(dayCount);
 
 
+  async function attemptImageLoad(url) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
 
+      image.addEventListener('error', () => {
+        reject(image);
+      });
 
-  function deathOftheDay(x=dayCount){
+      image.addEventListener('load', () => {
+        resolve(image);
+      });
+
+      image.src = url;
+    })
+  }
+
+  async function deathOftheDay(x=dayCount){
     pix = [];
    movieOfTheDay = movies[x];
     if (x<31){
       document.getElementById("movieFrame").style.display = "block";
+
+    let imageLocation = 'images'
+    try {
+      await attemptImageLoad(`${imageLocation}/${movieOfTheDay[0]}/1.png`)
+    } catch(e) {
+      imageLocation = 'images/2022'
+    }
+
     for (let i = 1; i < 5; i++) {
-      pix.push("images/"+movieOfTheDay[0]+"/"+i+".png");
-      preloadImage("images/"+movieOfTheDay[0]+"/"+i+".png");
+      pix.push(imageLocation+"/"+movieOfTheDay[0]+"/"+i+".png");
+      preloadImage(imageLocation+"/"+movieOfTheDay[0]+"/"+i+".png");
     }
     // preloadImage("images/"+movieOfTheDay[0]+"/poster.png");
-    document.getElementById("posterFrame").src = "images/"+movieOfTheDay[0]+"/poster.jpg";
+    document.getElementById("posterFrame").src = imageLocation+"/"+movieOfTheDay[0]+"/poster.jpg";
     console.log('Movie: ', movieOfTheDay[0]);
     console.log('Array: ', pix);
     showPic();
@@ -292,6 +314,25 @@ checkingGuess();
     // }
   }
 
+  function transitionToCompletedState() {
+    document.getElementById("movieFrame").style.display = "none";
+    document.getElementsByClassName("resultContainer")[0].style.display="flex";
+    localStorage.setItem('result_', textResult);
+    document.getElementById("feedback").style.display = "block";
+    document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛 <br>";
+    document.getElementById("resultText").innerHTML = textResult;
+    document.getElementById("resultText").style.display="block";
+    document.getElementById("countDown").style.display = "block";
+    document.getElementById("footer").style.display = "block";
+    document.getElementById("shareResult").style.display = "block";
+    document.getElementById("submitBonusGuess").style.display="none";
+    document.getElementById("skipBonusGuess").style.display="none";
+    document.getElementsByClassName("picButtons")[0].style.display="none";
+
+    showPic(movieOfTheDay[1])
+    addData();
+  }
+
   function submitBonus(b=0){
     if (buttonNo==movieOfTheDay[1]&&b==0) {
       bonusRoundState= true;
@@ -308,25 +349,8 @@ checkingGuess();
     else{
       console.log('you lose')
       document.getElementById("bonusQuestion").innerHTML = "Bonus Question ❌"+ "<br />" + "Survivor: "+ movieOfTheDay[2];
-
-
     }
-    document.getElementById("movieFrame").style.display = "none";
-    document.getElementsByClassName("resultContainer")[0].style.display="flex";
-    localStorage.setItem('result_', textResult);
-    document.getElementById("feedback").style.display = "block";
-    document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛 <br>";
-    document.getElementById("resultText").innerHTML = textResult;
-    document.getElementById("resultText").style.display="block";
-    document.getElementById("countDown").style.display = "block";
-    document.getElementById("footer").style.display = "block";
-    document.getElementById("shareResult").style.display = "block";
-    document.getElementById("submitBonusGuess").style.display="none";
-    document.getElementById("skipBonusGuess").style.display="none";
-    document.getElementsByClassName("picButtons")[0].style.display="none";
-    showPic(movieOfTheDay[1])
-    // console.log(buttonNo);
-    addData();
+    transitionToCompletedState()
   }
   setResult();
 function setResult(){
@@ -359,9 +383,15 @@ function setResult(){
       
       localStorage.setItem('movieName_', movieOfTheDay[0] + " ✅")
       // document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess which <b>image</b> contains the survivor?";
-      document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Use the buttons below to choose the image with the survivor";
-      document.getElementById("submitBonusGuess").style.display = "inline";
-      document.getElementById("skipBonusGuess").style.display = "inline";
+
+      if(movieOfTheDay.length > 1) {
+        document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Use the buttons below to choose the image with the survivor";
+        document.getElementById("submitBonusGuess").style.display = "inline";
+        document.getElementById("skipBonusGuess").style.display = "inline";
+      } else {
+        transitionToCompletedState()
+      }
+
       textResult = textResult + "🟩";
       for (var i = 1; i < (3-guessNo); i++) {
         textResult = textResult + "⬛";
