@@ -23,6 +23,7 @@ var movies = [
     ["Smile",0,"Joel"],
     ["Get Out",2,"Chris Washington"],
     ["Hellraiser",2,"Kirsty Cotton"],
+    ["Mirrors",3,"No survivors"],
     ["Friday the 13th"],
     ["Saw"],
     ["The Ring"],
