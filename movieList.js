@@ -26,6 +26,7 @@ var movies = [
     ["Mirrors",3,"No survivors"],
     ["Rec",3,"No survivors"],
     ["Annihilation",2,"Lena"],
+    ["It Follows",2,"Jaime Height"],
     ["Friday the 13th"],
     ["Saw"],
     ["The Ring"],
