@@ -11,15 +11,36 @@
 //pre-load images
 //image placeholder
 // gameover movie name
+
+  var gameBeginning = new Date('October 1, 2024 00:00:00');
+  var countDownTime =  new Date();
+  var present_date = new Date();
+
+  dayCounter();
+  window.addEventListener ("load", function() {
+    loader.style.display = 'none';
+});
+  if(dayCount<0){
+    document.getElementById("movieFrame").style.display = "none";
+    document.getElementById("guessForm").style.display = "none";
+    document.getElementsByClassName("picButtons")[0].style.display="none";
+    document.getElementById("movieName").innerHTML = "<br><br>Horrordle will be back starting October 1st!";
+    document.getElementById("feedback").innerHTML = " <br><br> <a href='https://twitter.com/horrordle'>follow me on twitter for updates</a><br><br> ";
+  }else if(dayCount>31){
+    document.getElementById("movieFrame").style.display = "none";
+    document.getElementById("guessForm").style.display = "none";
+    document.getElementsByClassName("picButtons")[0].style.display="none";
+    document.getElementById("movieName").innerHTML = "<br><br>Thanks for playing!";
+    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='https://twitter.com/horrordle'>follow me on twitter for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
+  }else{
+
 getReady()
 
 
 
 function getReady() {
 
-window.addEventListener ("load", function() {
-    loader.style.display = 'none';
-});
+
 guess='Skipped';
 
  if(!localStorage.getItem('playedBefore_')){
@@ -70,15 +91,14 @@ function revealButtons(g = guessNo){
 
   var pix = [];
   // autocomplete(document.getElementById("guess"), movies);
-  var gameBeginning = new Date('October 1, 2023 00:00:00');
-  var countDownTime =  new Date();
-  var present_date = new Date();
+  // var gameBeginning = new Date('October 1, 2024 00:00:00');
+  // var countDownTime =  new Date();
+  // var present_date = new Date();
   // var present_date = new Date('November 1, 2022 00:00:00');
   // var present_date = new Date('September 26, 2022 00:00:00');
 
   // gameBeginning = new Date(gameBeginning.getTime() + 0 * 60 * 1000);
   // console.log(gameBeginning.getTimezoneOffset());
-  dayCounter();
   if(dayCount>30){
     document.getElementsByClassName("gif")[0].style.display="block";
   }
@@ -88,14 +108,11 @@ function revealButtons(g = guessNo){
   
 
 // console.log(textResult);
-function dayCounter(){
-  dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
-  console.log("dayCount: " + dayCount);
 
-  return dayCount;
-}
 
 markCalendar();
+
+
 
 function markCalendar() {
   calendarResult="            "
@@ -103,6 +120,7 @@ function markCalendar() {
 loseCount = 0;
   dates = document.getElementsByClassName('calendar__number');
   console.log("dateslength: " + dates.length);
+  console.log("datesObejcts: " + dates);
   var tag = [];
   for (var i = 0; i < dates.length; i++) {
 
@@ -266,8 +284,9 @@ checkingGuess();
 
   async function deathOftheDay(x=dayCount){
     pix = [];
-   movieOfTheDay = movies[x];
-    if (x<31){
+   
+    
+      movieOfTheDay = movies[x];
       document.getElementById("movieFrame").style.display = "block";
 
     let imageLocation = 'images'
@@ -286,13 +305,7 @@ checkingGuess();
     console.log('Movie: ', movieOfTheDay[0]);
     console.log('Array: ', pix);
     showPic();
-  } else{
-    document.getElementById("movieFrame").style.display = "none";
-    document.getElementById("guessForm").style.display = "none";
-    document.getElementsByClassName("picButtons")[0].style.display="none";
-    document.getElementById("movieName").innerHTML = "<br><br>Thanks for playing!";
-    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='https://twitter.com/horrordle'>follow me on twitter for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
-  }
+  
 
     // picButton = document.getElementsByClassName('picButton');
     // picButton.setAttribute('onclick','getImage()');
@@ -335,11 +348,11 @@ checkingGuess();
 
   function submitBonus(b=0){
     if (buttonNo==movieOfTheDay[1]&&b==0) {
-      bonusRoundState= true;
-      // document.getElementById("bonusQuestion").style.display="none";
-      document.getElementById("bonusQuestion").innerHTML ="Bonus Question ⭐"+ "<br />" + "Survivor: "+ movieOfTheDay[2];
+      // bonusRoundState= true;
+      document.getElementById("bonusQuestion").style.display="none";
+      // document.getElementById("bonusQuestion").innerHTML ="Bonus Question ⭐"+ "<br />" + "Survivor: "+ movieOfTheDay[2];
 
-      textResult = textResult + "(⭐)"
+      // textResult = textResult + "(⭐)"
       console.log("you win!")
     } else if(b==1){
       // document.getElementById("bonusQuestion").innerHTML = "Survivor: "+ movieOfTheDay[2];
@@ -348,7 +361,7 @@ checkingGuess();
     }
     else{
       console.log('you lose')
-      document.getElementById("bonusQuestion").innerHTML = "Bonus Question ❌"+ "<br />" + "Survivor: "+ movieOfTheDay[2];
+      // document.getElementById("bonusQuestion").innerHTML = "Bonus Question ❌"+ "<br />" + "Survivor: "+ movieOfTheDay[2];
     }
     transitionToCompletedState()
   }
@@ -384,13 +397,13 @@ function setResult(){
       localStorage.setItem('movieName_', movieOfTheDay[0] + " ✅")
       // document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess which <b>image</b> contains the survivor?";
 
-      if(movieOfTheDay.length > 1) {
-        document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Use the buttons below to choose the image with the survivor";
-        document.getElementById("submitBonusGuess").style.display = "inline";
-        document.getElementById("skipBonusGuess").style.display = "inline";
-      } else {
-        transitionToCompletedState()
-      }
+      // if(movieOfTheDay.length > 1) {
+      //   document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Use the buttons below to choose the image with the survivor";
+      //   document.getElementById("submitBonusGuess").style.display = "inline";
+      //   document.getElementById("skipBonusGuess").style.display = "inline";
+      // } else {
+      //   transitionToCompletedState()
+      // }
 
       textResult = textResult + "🟩";
       for (var i = 1; i < (3-guessNo); i++) {
@@ -412,7 +425,7 @@ function setResult(){
       
 
       dates[dayCount].classList.add('won');
-      revealButtons(3);
+      submitBonus(2)
 
     } else if(guessNo==1){
       guessNo = guessNo + 1;
@@ -463,7 +476,7 @@ function setResult(){
     
  }
 
-
+ countdowAndRefresh();
  const autoCompleteJS = new autoComplete({
   placeHolder: "Search for Movies...",
   // wrapper: false,
@@ -600,6 +613,43 @@ const config = {
   }
 };
 
+
+function addData(){
+	myChart.data.datasets[0].data[0] = localStorage.getItem('firstGuessStat_');
+  myChart.data.datasets[0].data[1] = localStorage.getItem('secondGuessStat_');
+  myChart.data.datasets[0].data[2] = localStorage.getItem('thirdGuessStat_');
+  myChart.update();
+}
+const myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
+function preloadImage(url)
+{
+    var img=new Image();
+    img.src=url;
+};
+function resetFunction() {
+  if (confirm("this will delete all you progress, are you sure?") == true) {
+    window.localStorage.clear();
+  } else {
+
+  } 
+}
+
+function remember(){
+  localStorage.setItem('archiveButtonPressed_','true');
+  document.getElementsByClassName("gif")[0].style.display="none";
+}
+
+}
+function dayCounter(){
+  dayCount = Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24));
+  console.log("dayCount: " + dayCount);
+
+  return dayCount;
+}
+function countdowAndRefresh(){
 var x = setInterval(function() {
   // countDownTime.setDate(Math.floor((present_date - gameBeginning) / (1000 * 60 * 60 * 24))+2);
   dayCounter();
@@ -629,32 +679,5 @@ if (localStorage.getItem('day_')!=dayCount)  {
      window.location.reload();
 }
 }, 1000);
-function addData(){
-	myChart.data.datasets[0].data[0] = localStorage.getItem('firstGuessStat_');
-  myChart.data.datasets[0].data[1] = localStorage.getItem('secondGuessStat_');
-  myChart.data.datasets[0].data[2] = localStorage.getItem('thirdGuessStat_');
-  myChart.update();
-}
-const myChart = new Chart(
-  document.getElementById('myChart'),
-  config
-);
-function preloadImage(url)
-{
-    var img=new Image();
-    img.src=url;
-};
-function resetFunction() {
-  if (confirm("this will delete all you progress, are you sure?") == true) {
-    window.localStorage.clear();
-  } else {
-
-  } 
-}
-
-function remember(){
-  localStorage.setItem('archiveButtonPressed_','true');
-  document.getElementsByClassName("gif")[0].style.display="none";
-}
-
 //window.localStorage.clear();
+}
