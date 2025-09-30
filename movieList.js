@@ -1,4 +1,7 @@
 var movies = [
+    ["NOPE", 0, ""],
+    ["1408", 0, ""],
+    ["Heretic", 0, ""],
     ["Orphan", 0, ""],
     ["Pontypool", 0, ""],
     ["Talk To Me", 0, ""],
@@ -899,7 +902,6 @@ var movies = [
     ["Piranha"],
     ["Son of Dracula"],
     ["The Manson Family"],
-    ["1408"],
     ["The Canal"],
     ["Madhouse"],
     ["Crooked Rot"],

@@ -12,7 +12,7 @@
 //image placeholder
 // gameover movie name
 
-  var gameBeginning = new Date('October 1, 2024 00:00:00');
+  var gameBeginning = new Date('Ocotber 1, 2025 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
 
