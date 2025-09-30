@@ -395,6 +395,7 @@ function setResult(){
       document.getElementById("movieName").innerHTML = movieOfTheDay[0] + " ✅";
       
       localStorage.setItem('movieName__', movieOfTheDay[0] + " ✅")
+      plausible('Win');
       // document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess which <b>image</b> contains the survivor?";
 
       // if(movieOfTheDay.length > 1) {
@@ -465,6 +466,7 @@ function setResult(){
       localStorage.setItem("lost__", "yes");
       localStorage.setItem("playedToday__", "yes");
       dates[dayCount].classList.add('lost');
+      plausible('Lose');
       submitBonus(1);
 
     }
