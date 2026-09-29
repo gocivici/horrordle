@@ -12,7 +12,7 @@
 //image placeholder
 // gameover movie name
 
-  var gameBeginning = new Date('October 1, 2025 00:00:00');
+  var gameBeginning = new Date('October 1, 2026 00:00:00');
   var countDownTime =  new Date();
   var present_date = new Date();
 
@@ -25,13 +25,13 @@
     document.getElementById("guessForm").style.display = "none";
     document.getElementsByClassName("picButtons")[0].style.display="none";
     document.getElementById("movieName").innerHTML = "<br><br>Horrordle will be back starting October 1st!";
-    document.getElementById("feedback").innerHTML = " <br><br> <a href='https://twitter.com/horrordle'>follow me on twitter for updates</a><br><br> ";
+    document.getElementById("feedback").innerHTML = " <br><br> <a href='https://bsky.app/profile/horrordle.bsky.social'>follow me on Bluesky for updates</a><br><br> ";
   }else if(dayCount>30){
     document.getElementById("movieFrame").style.display = "none";
     document.getElementById("guessForm").style.display = "none";
     document.getElementsByClassName("picButtons")[0].style.display="none";
     document.getElementById("movieName").innerHTML = "<br><br>Thanks for playing!";
-    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='https://twitter.com/horrordle'>follow me on twitter for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
+    document.getElementById("feedback").innerHTML = "Horrordle will be back next October! <br><br> <a href='https://bsky.app/profile/horrordle.bsky.social'>follow me on Bluesky for updates</a><br><br> In the meantime you can go back and play  <br> the days you've missed by visiting the <br> <a href='#stats'>archive page</a>  on the top right and <br>clicking on the orange dates.";
   }else{
 
 getReady()
@@ -43,14 +43,14 @@ function getReady() {
 
 guess='Skipped';
 
- if(!localStorage.getItem('playedBefore___')){
+ if(!localStorage.getItem('playedBefore____')){
   // window.location = window.location.href + "#info";
   window.location = "https://gocivici.github.io/horrordle/#info"
   //  window.location = "file:///C:/Users/gogob/Documents/dEATHDLE/Test/index.html#info"
-  localStorage.setItem('playedBefore___',"true");
+  localStorage.setItem('playedBefore____',"true");
  }
 
- if(localStorage.getItem('archiveButtonPressed___')){
+ if(localStorage.getItem('archiveButtonPressed____')){
 
   document.getElementsByClassName("gif")[0].style.display="none";
  }
@@ -129,13 +129,13 @@ loseCount = 0;
         dates[i+1].classList.add('current');
       }
         
-          if (localStorage.getItem('day___'+(i))) {
-            if (localStorage.getItem('day___'+(i))=='true') {
+          if (localStorage.getItem('day____'+(i))) {
+            if (localStorage.getItem('day____'+(i))=='true') {
                 dates[i].classList.add('won');
                 calendarResult+="🟩"
                 if((i+6)%7==0){calendarResult+="\n"}
                 winCount=winCount + 1;
-            } else if (localStorage.getItem('day___'+(i))=='false') {
+            } else if (localStorage.getItem('day____'+(i))=='false') {
                 dates[i].classList.add('lost');
                 calendarResult+="🟥"
                 if((i+6)%7==0){calendarResult+="\n"}
@@ -150,7 +150,7 @@ loseCount = 0;
           calendarResult+="🟧"
           if((i+6)%7==0){calendarResult+="\n"}
           //dates[j].setAttribute('href','#');
-          if(localStorage.getItem("playedToday___")){
+          if(localStorage.getItem("playedToday____")){
           // dates[i].setAttribute('onclick','getArchive(' + (i+1) +')');
           // dates[j] = "<a href='#'>" + dates[j] + "</a>";
             }
@@ -180,10 +180,10 @@ revealButtons();
 function firstCheck(){
   guessNo = 0;
   feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
-  if(!localStorage.getItem('streak___')){localStorage.setItem('streak___',0)}
-  if(!localStorage.getItem('firstGuessStat___')){localStorage.setItem('firstGuessStat___',0)}
-  if(!localStorage.getItem('secondGuessStat___')){localStorage.setItem('secondGuessStat___',0)}
-  if(!localStorage.getItem('thirdGuessStat___')){localStorage.setItem('thirdGuessStat___',0)}
+  if(!localStorage.getItem('streak____')){localStorage.setItem('streak____',0)}
+  if(!localStorage.getItem('firstGuessStat____')){localStorage.setItem('firstGuessStat____',0)}
+  if(!localStorage.getItem('secondGuessStat____')){localStorage.setItem('secondGuessStat____',0)}
+  if(!localStorage.getItem('thirdGuessStat____')){localStorage.setItem('thirdGuessStat____',0)}
 }
 
 
@@ -192,14 +192,14 @@ function firstCheck(){
 
 
 function clearGuess() {
-  localStorage.removeItem('firstGuess___');
-  localStorage.removeItem('secondGuess___');
-  localStorage.removeItem('guessNo___');
-  localStorage.removeItem('winningGuess___');
-  localStorage.removeItem('lost___');
-  localStorage.removeItem('movieName___');
-  localStorage.removeItem("playedToday___");
-  localStorage.removeItem('result___');
+  localStorage.removeItem('firstGuess____');
+  localStorage.removeItem('secondGuess____');
+  localStorage.removeItem('guessNo____');
+  localStorage.removeItem('winningGuess____');
+  localStorage.removeItem('lost____');
+  localStorage.removeItem('movieName____');
+  localStorage.removeItem("playedToday____");
+  localStorage.removeItem('result____');
   document.getElementById("firstGuess").style.display = "none";
   document.getElementById("secondGuess").style.display = "none";
   document.getElementById("shareResult").style.display = "none";
@@ -230,30 +230,30 @@ function clearGuess() {
 function checkingGuess() {
   
 
-streakNumber.textContent =localStorage.getItem('streak___');
+streakNumber.textContent =localStorage.getItem('streak____');
 
-  if (localStorage.getItem('day___')==dayCount) {
+  if (localStorage.getItem('day____')==dayCount) {
 
 
   playedBefore = true;
-  textResult=localStorage.getItem('result___')
-  document.getElementById("movieName").innerHTML = localStorage.getItem('movieName___')
+  textResult=localStorage.getItem('result____')
+  document.getElementById("movieName").innerHTML = localStorage.getItem('movieName____')
   
   // console.log("played before: ",playedBefore);
   // console.log(localStorage.getItem('firstGuess'));
   // console.log(localStorage.getItem('secondGuess'));
-  if(localStorage.getItem('guessNo___')){guessNo=localStorage.getItem('guessNo___')};
+  if(localStorage.getItem('guessNo____')){guessNo=localStorage.getItem('guessNo____')};
   feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
-  if(localStorage.getItem('result___')) {localStorage.setItem('result___', textResult);}
-  if(localStorage.getItem('firstGuess___')){firstGuess.textContent = "❌ " + localStorage.getItem('firstGuess___');document.getElementById("firstGuess").style.display = "block";}
-  if(localStorage.getItem('secondGuess___')){secondGuess.textContent = "❌ " + localStorage.getItem('secondGuess___');document.getElementById("secondGuess").style.display = "block";}
-  if(localStorage.getItem('winningGuess___')||localStorage.getItem('lost___')){document.getElementById("resultText").innerHTML =textResult;document.getElementById("movieFrame").style.display = "none";document.getElementById("links").style.display = "block";document.getElementsByClassName("resultContainer")[0].style.display="flex";document.getElementsByClassName("picButtons")[0].style.display="none";document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("footer").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("resultText").innerHTML =textResult;document.getElementById("movieFrame").style.display = "block";document.getElementsByClassName("resultContainer")[0].style.display="none";document.getElementsByClassName("picButtons")[0].style.display="block";document.getElementById("shareResult").style.display = "none";document.getElementById("countDown").style.display = "none";document.getElementById("footer").style.display = "block";document.getElementById("guessForm").style.display = "block";};
-  if(localStorage.getItem('lost___')){ document.getElementById("congratz").innerHTML = "You lost☠️"; document.getElementsByClassName("resultContainer")[0].style.borderColor = "#C62828";}
-  secondGuess.textContent = "❌ " + localStorage.getItem('secondGuess___');
+  if(localStorage.getItem('result____')) {localStorage.setItem('result____', textResult);}
+  if(localStorage.getItem('firstGuess____')){firstGuess.textContent = "❌ " + localStorage.getItem('firstGuess____');document.getElementById("firstGuess").style.display = "block";}
+  if(localStorage.getItem('secondGuess____')){secondGuess.textContent = "❌ " + localStorage.getItem('secondGuess____');document.getElementById("secondGuess").style.display = "block";}
+  if(localStorage.getItem('winningGuess____')||localStorage.getItem('lost____')){document.getElementById("resultText").innerHTML =textResult;document.getElementById("movieFrame").style.display = "none";document.getElementById("links").style.display = "block";document.getElementsByClassName("resultContainer")[0].style.display="flex";document.getElementsByClassName("picButtons")[0].style.display="none";document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛";document.getElementById("shareResult").style.display = "block";document.getElementById("countDown").style.display = "block";document.getElementById("footer").style.display = "block";document.getElementById("guessForm").style.display = "none";document.getElementById("firstGuess").style.display = "none";document.getElementById("secondGuess").style.display = "none";document.getElementById("resultText").style.display="block";}else {document.getElementById("resultText").innerHTML =textResult;document.getElementById("movieFrame").style.display = "block";document.getElementsByClassName("resultContainer")[0].style.display="none";document.getElementsByClassName("picButtons")[0].style.display="block";document.getElementById("shareResult").style.display = "none";document.getElementById("countDown").style.display = "none";document.getElementById("footer").style.display = "block";document.getElementById("guessForm").style.display = "block";};
+  if(localStorage.getItem('lost____')){ document.getElementById("congratz").innerHTML = "You lost☠️"; document.getElementsByClassName("resultContainer")[0].style.borderColor = "#C62828";}
+  secondGuess.textContent = "❌ " + localStorage.getItem('secondGuess____');
   revealButtons();
 }else {
 clearGuess();
-localStorage.setItem('day___', dayCount);
+localStorage.setItem('day____', dayCount);
 }
 markCalendar();
 
@@ -330,7 +330,7 @@ checkingGuess();
   function transitionToCompletedState() {
     document.getElementById("movieFrame").style.display = "none";
     document.getElementsByClassName("resultContainer")[0].style.display="flex";
-    localStorage.setItem('result___', textResult);
+    localStorage.setItem('result____', textResult);
     document.getElementById("feedback").style.display = "block";
     document.getElementById("feedback").innerHTML = "Next movie at <b>midnight!</b> 🕛 <br>";
     document.getElementById("resultText").innerHTML = textResult;
@@ -368,17 +368,17 @@ checkingGuess();
   }
   setResult();
 function setResult(){
-  if(!localStorage.getItem('result___')){
+  if(!localStorage.getItem('result____')){
   textResult = "🔪";
 }else{
-  textResult = localStorage.getItem('result___');
+  textResult = localStorage.getItem('result____');
 }
 }
 
 document.getElementById("letterboxd").href = movieOfTheDay[2];
 document.getElementById("wikipedia").href = movieOfTheDay[3];
   function checkGuess() {
-    localStorage.setItem('playedBefore___','true');
+    localStorage.setItem('playedBefore____','true');
     
 // console.log("day count:" + dayCount);
     let myGuess = guess
@@ -387,20 +387,20 @@ document.getElementById("wikipedia").href = movieOfTheDay[3];
 
     if (myGuess === movieOfTheDay[0]) {
       
-      if(guessNo==0){localStorage.setItem('firstGuessStat___',parseInt(localStorage.getItem('firstGuessStat___')) + 1);}
-      if(guessNo==1){localStorage.setItem('secondGuessStat___',parseInt(localStorage.getItem('secondGuessStat___')) + 1);}
-      if(guessNo==2){localStorage.setItem('thirdGuessStat___',parseInt(localStorage.getItem('thirdGuessStat___')) + 1);}
-      localStorage.setItem('streak___',parseInt(localStorage.getItem('streak___')) + 1);
-      localStorage.setItem('day___'+dayCount,'true');
+      if(guessNo==0){localStorage.setItem('firstGuessStat____',parseInt(localStorage.getItem('firstGuessStat____')) + 1);}
+      if(guessNo==1){localStorage.setItem('secondGuessStat____',parseInt(localStorage.getItem('secondGuessStat____')) + 1);}
+      if(guessNo==2){localStorage.setItem('thirdGuessStat____',parseInt(localStorage.getItem('thirdGuessStat____')) + 1);}
+      localStorage.setItem('streak____',parseInt(localStorage.getItem('streak____')) + 1);
+      localStorage.setItem('day____'+dayCount,'true');
       
       // document.getElementById("movieFrame").src = "images/"+movieOfTheDay+"/poster.jpg";
-      console.log(localStorage.getItem('day___'+dayCount));
-      streakNumber.textContent = localStorage.getItem('streak___');
+      console.log(localStorage.getItem('day____'+dayCount));
+      streakNumber.textContent = localStorage.getItem('streak____');
       document.getElementById("guessForm").style.display = "none";
       document.getElementById("feedback").style.display = "none";
       document.getElementById("movieName").innerHTML = movieOfTheDay[0] + " ✅";
       
-      localStorage.setItem('movieName___', movieOfTheDay[0] + " ✅")
+      localStorage.setItem('movieName____', movieOfTheDay[0] + " ✅")
       plausible('Win');
       // document.getElementById("bonusQuestion").innerHTML = "⭐BONUS ROUND⭐<br> Can you guess which <b>image</b> contains the survivor?";
 
@@ -416,7 +416,7 @@ document.getElementById("wikipedia").href = movieOfTheDay[3];
       for (var i = 1; i < (3-guessNo); i++) {
         textResult = textResult + "⬛";
       }
-      localStorage.setItem('result___', textResult);
+      localStorage.setItem('result____', textResult);
       // document.getElementById("countDown").style.display = "block";
       // document.getElementById("shareResult").style.display = "block";
       // document.getElementsByClassName("picButtons")[0].classList.add('bonusScreen')
@@ -425,8 +425,8 @@ document.getElementById("wikipedia").href = movieOfTheDay[3];
         tempButton[i].classList.add("bonusScreen");
       }
       // document.getElementsByClassName("imageButton")[0].style.fontSize = "32px";
-      localStorage.setItem("winningGuess___", guess);
-      localStorage.setItem("playedToday___", "yes");
+      localStorage.setItem("winningGuess____", guess);
+      localStorage.setItem("playedToday____", "yes");
         document.getElementById("firstGuess").style.display = "none";
   document.getElementById("secondGuess").style.display = "none";
       
@@ -436,25 +436,25 @@ document.getElementById("wikipedia").href = movieOfTheDay[3];
 
     } else if(guessNo==1){
       guessNo = guessNo + 1;
-      localStorage.setItem('guessNo___', guessNo);
+      localStorage.setItem('guessNo____', guessNo);
       feedback.textContent = "🩸 " + (3-guessNo) + " guesses remaining";
       document.getElementById("movieFrame").src = pix[guessNo];
       firstGuess.textContent = "❌ " + guess;
-      localStorage.setItem('firstGuess___', guess);
+      localStorage.setItem('firstGuess____', guess);
       document.getElementById("firstGuess").style.display = "block";
       textResult = textResult + "🟥";
-      localStorage.setItem('result___', textResult);
+      localStorage.setItem('result____', textResult);
       revealButtons();
     }else if(guessNo<2){
       guessNo = guessNo + 1;
-      localStorage.setItem('guessNo___', guessNo);
+      localStorage.setItem('guessNo____', guessNo);
       feedback.textContent =  "🩸 " + (3-guessNo) + " guesses remaining";
       document.getElementById("movieFrame").src = pix[guessNo];
       secondGuess.textContent = "❌ " + guess;
-      localStorage.setItem('secondGuess___', guess);
+      localStorage.setItem('secondGuess____', guess);
       document.getElementById("secondGuess").style.display = "block";
       textResult = textResult + "🟥";
-      localStorage.setItem('result___', textResult);
+      localStorage.setItem('result____', textResult);
       revealButtons();
     }
      else{
@@ -466,11 +466,11 @@ document.getElementById("wikipedia").href = movieOfTheDay[3];
       document.getElementById("feedback").style.display = "none";
       document.getElementById("firstGuess").style.display = "none";
       document.getElementById("secondGuess").style.display = "none";
-      localStorage.setItem('guessNo___', guessNo);
-      localStorage.setItem('streak___', 0);
-      localStorage.setItem('day___'+dayCount,'false');
-      localStorage.setItem("lost___", "yes");
-      localStorage.setItem("playedToday___", "yes");
+      localStorage.setItem('guessNo____', guessNo);
+      localStorage.setItem('streak____', 0);
+      localStorage.setItem('day____'+dayCount,'false');
+      localStorage.setItem("lost____", "yes");
+      localStorage.setItem("playedToday____", "yes");
       dates[dayCount].classList.add('lost');
       plausible('Lose');
       submitBonus(1);
@@ -600,7 +600,7 @@ const data = {
     backgroundColor: ['#BB86FC'],
     fontColor: 'white',
     color:'white',
-    data: [localStorage.getItem('firstGuessStat___'), localStorage.getItem('secondGuessStat___'), localStorage.getItem('thirdGuessStat___')],
+    data: [localStorage.getItem('firstGuessStat____'), localStorage.getItem('secondGuessStat____'), localStorage.getItem('thirdGuessStat____')],
   }]
 };
 
@@ -623,9 +623,9 @@ const config = {
 
 
 function addData(){
-	myChart.data.datasets[0].data[0] = localStorage.getItem('firstGuessStat___');
-  myChart.data.datasets[0].data[1] = localStorage.getItem('secondGuessStat___');
-  myChart.data.datasets[0].data[2] = localStorage.getItem('thirdGuessStat___');
+	myChart.data.datasets[0].data[0] = localStorage.getItem('firstGuessStat____');
+  myChart.data.datasets[0].data[1] = localStorage.getItem('secondGuessStat____');
+  myChart.data.datasets[0].data[2] = localStorage.getItem('thirdGuessStat____');
   myChart.update();
 }
 const myChart = new Chart(
@@ -646,7 +646,7 @@ function resetFunction() {
 }
 
 function remember(){
-  localStorage.setItem('archiveButtonPressed___','true');
+  localStorage.setItem('archiveButtonPressed____','true');
   document.getElementsByClassName("gif")[0].style.display="none";
 }
 
@@ -683,7 +683,7 @@ document.getElementById("countDown").innerHTML =  hoursLeft + "h "
 // console.log(localStorage.getItem('day'));
 // console.log("day count: " + dayCount);
 dayCount = Math.floor((now - gameBeginning) / (1000 * 60 * 60 * 24));
-if (localStorage.getItem('day___')!=dayCount)  {
+if (localStorage.getItem('day____')!=dayCount)  {
      window.location.reload();
 }
 }, 1000);
